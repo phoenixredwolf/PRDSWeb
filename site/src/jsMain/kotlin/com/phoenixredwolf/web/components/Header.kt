@@ -51,7 +51,7 @@ fun LeftSide(breakpoint: Breakpoint) {
             )
         }
         Image(
-            modifier = LogoStyle.toModifier().width(100.px),
+            modifier = LogoStyle.toModifier(),
             src = Res.Image.logo,
             desc = "Logo Image"
         )

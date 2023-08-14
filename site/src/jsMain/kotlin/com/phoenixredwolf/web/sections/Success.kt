@@ -43,8 +43,8 @@ fun Success(breakpoint: Breakpoint) {
             if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
             numColumns = numColumns(base = 1, md = 2)
         ) {
-            SuccessImage()
             SuccessText(breakpoint)
+            SuccessImage()
         }
     }
 }
@@ -57,7 +57,7 @@ private fun SuccessText(breakpoint: Breakpoint) {
         P(
             attrs = Modifier
                 .fillMaxWidth()
-                .textAlign(TextAlign.Start)
+                .textAlign(TextAlign.End)
                 .margin(left = 20.px)
                 .fontSize(if (breakpoint >= Breakpoint.LG) 25.px else 15.px)
                 .toAttrs()

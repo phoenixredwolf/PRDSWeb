@@ -43,8 +43,8 @@ fun Citizenship(breakpoint: Breakpoint) {
             if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
             numColumns = numColumns(base = 1, md = 2)
         ) {
-            CitizenshipText(breakpoint)
             CitizenshipImage()
+            CitizenshipText(breakpoint)
         }
     }
 }
@@ -57,7 +57,7 @@ private fun CitizenshipText(breakpoint: Breakpoint) {
         P(
             attrs = Modifier
                 .fillMaxWidth()
-                .textAlign(TextAlign.End)
+                .textAlign(TextAlign.Start)
                 .margin(left = 20.px)
                 .fontSize(if (breakpoint >= Breakpoint.LG) 25.px else 15.px)
                 .toAttrs()
