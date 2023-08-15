@@ -4,8 +4,9 @@ import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.components.Footer
 import com.phoenixredwolf.web.components.Header
 import com.phoenixredwolf.web.models.Theme
-import com.phoenixredwolf.web.sections.*
+import com.phoenixredwolf.web.sections.homepage.*
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -17,25 +18,28 @@ import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 @Page
 @Composable
 fun HomePage() {
-    Column(
-        modifier = Modifier.fillMaxSize().backgroundColor(Theme.PrimaryContainer.rgb),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
-    ) {
-        val breakpoint = rememberBreakpoint()
-        Header(breakpoint)
-
+    Box {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().backgroundColor(Theme.Gray.rgb),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
+            verticalArrangement = Arrangement.Top
         ) {
-            Empower(breakpoint)
-            Innovate(breakpoint)
-            Collaborate(breakpoint)
-            Citizenship(breakpoint)
-            Success(breakpoint)
+            val breakpoint = rememberBreakpoint()
+            Header(breakpoint)
+
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                Empower(breakpoint)
+                Innovate(breakpoint)
+                Collaborate(breakpoint)
+                Citizenship(breakpoint)
+                Success(breakpoint)
+            }
+            Footer(breakpoint)
         }
-        Footer(breakpoint)
+
     }
 }

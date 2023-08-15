@@ -21,6 +21,6 @@ fun Services() {
     ) {
         val breakpoint = rememberBreakpoint()
         Header(breakpoint)
-        Text("Services Page")
+        Text("Under Construction")
     }
 }

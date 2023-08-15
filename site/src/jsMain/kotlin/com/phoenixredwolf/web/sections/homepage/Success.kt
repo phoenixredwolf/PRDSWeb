@@ -1,4 +1,4 @@
-package com.phoenixredwolf.web.sections
+package com.phoenixredwolf.web.sections.homepage
 
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Theme
@@ -22,9 +22,12 @@ import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun Citizenship(breakpoint: Breakpoint) {
+fun Success(breakpoint: Breakpoint) {
     Column(
-        modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 30.px)
+            .backgroundColor(Theme.PrimaryContainer.rgb),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         P(
@@ -37,50 +40,52 @@ fun Citizenship(breakpoint: Breakpoint) {
                 .color(Theme.Secondary.rgb)
                 .toAttrs()
         ) {
-            Text("Responsible Corporate Citizenship")
+            Text("Your Partner for Success")
         }
         SimpleGrid(modifier = Modifier.fillMaxWidth(
             if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
             numColumns = numColumns(base = 1, md = 2)
         ) {
-            CitizenshipImage()
-            CitizenshipText(breakpoint)
+            SuccessText(breakpoint)
+            SuccessImage()
         }
     }
 }
 
 @Composable
-private fun CitizenshipText(breakpoint: Breakpoint) {
+private fun SuccessText(breakpoint: Breakpoint) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px)
     ) {
         P(
             attrs = Modifier
                 .fillMaxWidth()
-                .textAlign(TextAlign.Start)
+                .textAlign(TextAlign.End)
                 .margin(left = 20.px)
                 .fontSize(if (breakpoint >= Breakpoint.LG) 25.px else 15.px)
                 .toAttrs()
         ) {
             Text(
-                "As a responsible corporate citizen, we are committed to minimizing our environmental impact " +
-                        "and supporting sustainable business practices. We strive to make a positive difference in " +
-                        "the communities we serve, promoting inclusivity and diversity in all aspects of our operations."
+                "With integrity and passion, we forge enduring partnerships with our clients, seeking to become " +
+                        "an extension of your teams. Together, we embrace challenges, conquer complexities, and " +
+                        "transform possibilities into realities. At PhoenixRedwolf Digital Services, we are the " +
+                        "catalyst for your digital journey, igniting the power of technology to drive lasting and " +
+                        "meaningful success for your business."
             )
         }
     }
 }
 
 @Composable
-private fun CitizenshipImage() {
+private fun SuccessImage() {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            src = Res.Image.corporate,
-            desc = "Corporate Citizenship Image",
+            src = Res.Image.success,
+            desc = "Success Image",
             modifier = Modifier.fillMaxWidth(80.percent)
         )
     }

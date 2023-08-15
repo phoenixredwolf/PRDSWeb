@@ -20,23 +20,27 @@ import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
+import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 @Composable
 fun Header(breakpoint: Breakpoint) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth(if(breakpoint > Breakpoint.MD) 80.percent else 90.percent)
-            .margin(topBottom = 50.px),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        LeftSide(breakpoint)
-        if (breakpoint > Breakpoint.MD) {
-            RightSide()
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(if(breakpoint > Breakpoint.MD) 80.percent else 90.percent)
+                .margin(topBottom = 50.px),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            LeftSide(breakpoint)
+            if (breakpoint > Breakpoint.MD) {
+                RightSide()
+            }
         }
-    }
+
+
 }
 
 @Composable

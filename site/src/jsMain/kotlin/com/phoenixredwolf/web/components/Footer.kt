@@ -53,7 +53,7 @@ fun Footer(breakpoint: Breakpoint) {
 @Composable
 private fun FooterImage() {
     Column(
-        modifier = Modifier.fillMaxSize(30.percent),
+        modifier = Modifier.fillMaxSize(25.percent),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {

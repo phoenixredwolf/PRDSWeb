@@ -16,7 +16,7 @@ enum class Theme(val hex: String, val rgb: CSSColorValue) {
     OnError(hex = "#FFFFFF", rgb = rgb(r = 255, g = 255, b = 255)),
     OnBackground(hex = "#1b1b1f", rgb = rgb(r = 27, g = 27, b = 31)),
     PrimaryContainer(hex = "#dae1ff", rgb = rgb(r = 218, g = 225, b = 255)),
-    SecondaryContainer(hex = "#dae1ff", rgb = rgb(r = 218, g = 225, b = 255)),
+    SecondaryContainer(hex = "#9cf6ae", rgb = rgb(r = 156, g = 246, b = 174)),
     TertiaryContainer(hex = "#ffd6f9", rgb = rgb(r = 255, g = 214, b = 249)),
     ErrorContainer(hex = "#ffdad6", rgb = rgb(r = 255, g = 218, b = 214)),
     Surface(hex = "#fefbff", rgb = rgb(r = 254, g = 251, b = 255)),

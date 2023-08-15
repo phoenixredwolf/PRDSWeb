@@ -1,4 +1,4 @@
-package com.phoenixredwolf.web.sections
+package com.phoenixredwolf.web.sections.homepage
 
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Theme
@@ -22,9 +22,12 @@ import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun Success(breakpoint: Breakpoint) {
+fun Citizenship(breakpoint: Breakpoint) {
     Column(
-        modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 30.px)
+            .backgroundColor(Theme.SecondaryContainer.rgb),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         P(
@@ -34,55 +37,53 @@ fun Success(breakpoint: Breakpoint) {
                     if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
                 .fontSize(if(breakpoint >= Breakpoint.LG) 45.px else 25.px)
                 .fontWeight(FontWeight.SemiBold)
-                .color(Theme.Secondary.rgb)
+                .color(Theme.OnSecondaryContainer.rgb)
                 .toAttrs()
         ) {
-            Text("Your Partner for Success")
+            Text("Responsible Corporate Citizenship")
         }
         SimpleGrid(modifier = Modifier.fillMaxWidth(
             if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
             numColumns = numColumns(base = 1, md = 2)
         ) {
-            SuccessText(breakpoint)
-            SuccessImage()
+            CitizenshipImage()
+            CitizenshipText(breakpoint)
         }
     }
 }
 
 @Composable
-private fun SuccessText(breakpoint: Breakpoint) {
+private fun CitizenshipText(breakpoint: Breakpoint) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px)
     ) {
         P(
             attrs = Modifier
                 .fillMaxWidth()
-                .textAlign(TextAlign.End)
+                .textAlign(TextAlign.Start)
                 .margin(left = 20.px)
                 .fontSize(if (breakpoint >= Breakpoint.LG) 25.px else 15.px)
                 .toAttrs()
         ) {
             Text(
-                "With integrity and passion, we forge enduring partnerships with our clients, seeking to become " +
-                        "an extension of your teams. Together, we embrace challenges, conquer complexities, and " +
-                        "transform possibilities into realities. At PhoenixRedwolf Digital Services, we are the " +
-                        "catalyst for your digital journey, igniting the power of technology to drive lasting and " +
-                        "meaningful success for your business."
+                "As a responsible corporate citizen, we are committed to minimizing our environmental impact " +
+                        "and supporting sustainable business practices. We strive to make a positive difference in " +
+                        "the communities we serve, promoting inclusivity and diversity in all aspects of our operations."
             )
         }
     }
 }
 
 @Composable
-private fun SuccessImage() {
+private fun CitizenshipImage() {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            src = Res.Image.success,
-            desc = "Success Image",
+            src = Res.Image.corporate,
+            desc = "Corporate Citizenship Image",
             modifier = Modifier.fillMaxWidth(80.percent)
         )
     }

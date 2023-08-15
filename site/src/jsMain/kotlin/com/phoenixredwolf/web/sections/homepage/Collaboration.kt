@@ -1,4 +1,4 @@
-package com.phoenixredwolf.web.sections
+package com.phoenixredwolf.web.sections.homepage
 
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Theme
@@ -25,7 +25,10 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun Collaborate(breakpoint: Breakpoint) {
     Column(
-        modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 30.px)
+            .backgroundColor(Theme.TertiaryContainer.rgb),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         P(
@@ -35,7 +38,7 @@ fun Collaborate(breakpoint: Breakpoint) {
                     if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
                 .fontSize(if(breakpoint >= Breakpoint.LG) 45.px else 25.px)
                 .fontWeight(FontWeight.SemiBold)
-                .color(Theme.Secondary.rgb)
+                .color(Theme.OnTertiaryContainer.rgb)
                 .toAttrs()
         ) {
             Text ("Collaboration and Continuous Learning")
@@ -66,7 +69,7 @@ private fun CollaborateText(breakpoint: Breakpoint) {
             Text("At ")
             Span(
                 attrs = Modifier
-                    .color(Theme.Tertiary.rgb)
+                    .color(Theme.OnTertiaryContainer.rgb)
                     .fontWeight(FontWeight.SemiBold)
                     .toAttrs()
             ){

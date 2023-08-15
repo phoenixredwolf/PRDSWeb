@@ -26,7 +26,7 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun About() {
     Column(
-        modifier = Modifier.fillMaxSize().backgroundColor(Theme.PrimaryContainer.rgb),
+        modifier = Modifier.fillMaxSize().backgroundColor(Theme.Gray.rgb),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
@@ -64,7 +64,7 @@ fun About() {
             ) {
                 Text("At ")
                 Span(
-                    attrs = Modifier.color(Theme.Tertiary.rgb).fontWeight(FontWeight.SemiBold).toAttrs()
+                    attrs = Modifier.color(Theme.Secondary.rgb).fontWeight(FontWeight.SemiBold).toAttrs()
                 ){Text("PhoenixRedwolf Digital Services") }
                 Text(", our mission is to empower businesses and organizations " +
                         "to thrive in the digital age by delivering exceptional technical consulting, web development " +
@@ -100,7 +100,7 @@ fun About() {
             ) {
                 Text(value = "At ")
                 Span(
-                    attrs = Modifier.color(Theme.Tertiary.rgb).fontWeight(FontWeight.SemiBold).toAttrs()
+                    attrs = Modifier.color(Theme.Secondary.rgb).fontWeight(FontWeight.SemiBold).toAttrs()
                 ){Text("PhoenixRedwolf") }
                 Text(", we foster a culture of collaboration, continuous learning, and " +
                         "adaptability. We stay at the forefront of the rapidly evolving digital landscape to provide " +
@@ -137,7 +137,7 @@ fun About() {
                         "become an extension of their teams. Together, we embrace challenges, conquer complexities, " +
                         "and transform possibilities into realities. At ")
                 Span(
-                    attrs = Modifier.color(Theme.Tertiary.rgb).fontWeight(FontWeight.SemiBold).toAttrs()
+                    attrs = Modifier.color(Theme.Secondary.rgb).fontWeight(FontWeight.SemiBold).toAttrs()
                 ){
                     Text("PhoenixRedwolf Digital Services")
                 }
