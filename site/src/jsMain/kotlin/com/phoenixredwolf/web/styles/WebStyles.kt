@@ -2,10 +2,10 @@ package com.phoenixredwolf.web.styles
 
 import com.phoenixredwolf.web.models.Theme
 import com.varabyte.kobweb.compose.css.CSSTransition
-import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.transform
+import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.anyLink
@@ -59,14 +59,14 @@ val LogoStyle by ComponentStyle {
 val NavigationItemStyle by ComponentStyle {
     base {
         Modifier
-            .color(Theme.Secondary.rgb)
+            .color(Theme.Primary.rgb)
             .transition(CSSTransition(property = "color", duration = 200.ms))
     }
     anyLink {
         Modifier
-            .color(Theme.Secondary.rgb)
+            .color(Theme.Primary.rgb)
     }
     hover {
-        Modifier.color(Theme.Primary.rgb)
+        Modifier.color(Theme.Secondary.rgb)
     }
 }

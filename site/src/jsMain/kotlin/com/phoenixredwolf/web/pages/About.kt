@@ -1,7 +1,11 @@
 package com.phoenixredwolf.web.pages
 
 import androidx.compose.runtime.Composable
+import com.phoenixredwolf.web.components.BackToTopButton
+import com.phoenixredwolf.web.components.FooterContent
 import com.phoenixredwolf.web.components.Header
+import com.phoenixredwolf.web.components.SectionTitle
+import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
 import com.phoenixredwolf.web.util.Constants.FONT_FAMILY
 import com.varabyte.kobweb.compose.css.FontStyle
@@ -11,6 +15,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
@@ -18,6 +23,7 @@ import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Footer
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
@@ -26,31 +32,22 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun About() {
     Column(
-        modifier = Modifier.fillMaxSize().backgroundColor(Theme.Gray.rgb),
+        modifier = Modifier
+            .fillMaxSize()
+            .backgroundColor(Colors.WhiteSmoke),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
         val breakpoint = rememberBreakpoint()
         Header(breakpoint)
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            P(
-                attrs = Modifier
-                    .margin(topBottom = 0.px)
-                    .fontFamily(FONT_FAMILY)
-                    .fontSize(if(breakpoint >= Breakpoint.LG) 60.px else 40.px)
-                    .fontWeight(FontWeight.Bolder)
-                    .color(Theme.Primary.rgb)
-                    .toAttrs()
-            ) {
-                Text("Our Mission")
-            }
-        }
 
+        SectionTitle(
+            section = Section.About
+        )
         Column(
-            modifier = Modifier.fillMaxHeight().fillMaxWidth(if(breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(if(breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
         ) {
             P(
                 attrs = Modifier
@@ -162,6 +159,12 @@ fun About() {
             }
 
         }
-
+        Footer(
+            attrs = Modifier
+                .fillMaxWidth()
+                .toAttrs(),
+            content = { FooterContent(breakpoint) }
+        )
     }
+    BackToTopButton()
 }

@@ -10,6 +10,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
@@ -24,7 +25,10 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun Innovate(breakpoint: Breakpoint) {
     Column(
-        modifier = Modifier.fillMaxWidth().padding(bottom = 30.px).backgroundColor(Theme.SecondaryContainer.rgb),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 30.px)
+            .backgroundColor(Colors.WhiteSmoke),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         P(

@@ -10,6 +10,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
@@ -28,7 +29,7 @@ fun Collaborate(breakpoint: Breakpoint) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 30.px)
-            .backgroundColor(Theme.TertiaryContainer.rgb),
+            .backgroundColor(Colors.WhiteSmoke),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         P(

@@ -1,4 +1,8 @@
+
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import kotlinx.html.link
+import kotlinx.html.script
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -14,13 +18,29 @@ kobweb {
     app {
         index {
             description.set("Powered by Kobweb")
+            head.add {
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                }
+                link {
+                    href = "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+                    rel = "stylesheet"
+                }
+                script {
+                    src = "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "https://fonts.googleapis.com/icon?family=Material+Icons"
+                }
+            }
         }
     }
 }
 
 kotlin {
     configAsKobwebApplication("web", includeServer = true)
-
     @Suppress("UNUSED_VARIABLE") // Suppress spurious warnings about sourceset variables not being used
     sourceSets {
         val commonMain by getting {
@@ -41,6 +61,15 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(libs.kobweb.api)
+            }
+        }
+    }
+    afterEvaluate {
+        project.extensions.findByType<KotlinMultiplatformExtension>()?.let { ext ->
+            ext.sourceSets.removeAll { sourceSet ->
+                setOf(
+                    "commonTest"
+                ).contains(sourceSet.name)
             }
         }
     }

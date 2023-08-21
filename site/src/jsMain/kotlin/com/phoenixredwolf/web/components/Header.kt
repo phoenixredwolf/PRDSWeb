@@ -20,7 +20,6 @@ import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
-import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
@@ -30,7 +29,7 @@ fun Header(breakpoint: Breakpoint) {
         Row(
             modifier = Modifier
                 .fillMaxWidth(if(breakpoint > Breakpoint.MD) 80.percent else 90.percent)
-                .margin(topBottom = 50.px),
+                .margin(topBottom = 25.px),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -69,22 +68,36 @@ fun RightSide() {
         modifier = Modifier
             .fillMaxWidth()
             .borderRadius(r = 50.px)
-            .backgroundColor(Theme.Background.rgb)
-            .padding(all = 20.px)
-            .margin(left = 20.px),
-        horizontalArrangement = Arrangement.End
+            .backgroundColor(Theme.LightGray.rgb)
+            .padding(all = 10.px)
+            .margin(left = 40.px),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Section.values().forEach { section ->
-            Link(
-                modifier = NavigationItemStyle.toModifier()
-                    .padding(right = 30.px)
-                    .fontFamily(FONT_FAMILY)
-                    .fontSize(18.px)
-                    .fontWeight(FontWeight.Normal)
-                    .textDecorationLine(TextDecorationLine.None),
-                path = section.path,
-                text = section.title
+        Row(
+            horizontalArrangement = Arrangement.Start
+        ) {
+            Image(
+                src = Res.Image.icon,
+                desc = "PhoenixRedwolf Digital Services Icon",
+                modifier = LogoStyle.toModifier().height(40.px)
             )
+        }
+        Row(
+            horizontalArrangement = Arrangement.End
+        ) {
+            Section.values().forEach { section ->
+                Link(
+                    modifier = NavigationItemStyle.toModifier()
+                        .padding(right = 30.px)
+                        .fontFamily(FONT_FAMILY)
+                        .fontSize(18.px)
+                        .fontWeight(FontWeight.Normal)
+                        .textDecorationLine(TextDecorationLine.None),
+                    path = section.path,
+                    text = section.title
+                )
+            }
         }
     }
 }

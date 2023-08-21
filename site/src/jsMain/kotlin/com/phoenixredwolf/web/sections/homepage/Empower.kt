@@ -28,7 +28,7 @@ fun Empower(breakpoint: Breakpoint) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 20.px,bottom = 30.px)
-            .backgroundColor(Theme.PrimaryContainer.rgb),
+            .margin(top = 100.px),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         P(
