@@ -1,31 +1,41 @@
 package com.phoenixredwolf.web.pages
 
-import androidx.compose.runtime.Composable
-import com.phoenixredwolf.web.components.BackToTopButton
-import com.phoenixredwolf.web.components.FooterContent
-import com.phoenixredwolf.web.components.Header
-import com.phoenixredwolf.web.sections.homepage.*
+import androidx.compose.runtime.*
+import com.phoenixredwolf.web.components.*
+import com.phoenixredwolf.web.models.Section
+import com.phoenixredwolf.web.models.Theme
+import com.phoenixredwolf.web.sections.services.*
+import com.phoenixredwolf.web.styles.NavigationItemStyle
+import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.position
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.silk.components.navigation.Link
+import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Footer
+import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Text
 
 @Page
 @Composable
 fun HomePage() {
-    Box {
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        var menuOpened by remember { mutableStateOf(false)}
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -34,26 +44,55 @@ fun HomePage() {
             verticalArrangement = Arrangement.Top
         ) {
             val breakpoint = rememberBreakpoint()
-            Row(
-                modifier = Modifier
-                    .position(Position.Fixed )
-                    .backgroundColor(Colors.WhiteSmoke)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Header(breakpoint)
-            }
+            Header(breakpoint, onMenuClicked = { menuOpened = true})
+
+            SectionTitle(section = Section.Home, breakpoint = breakpoint)
 
             Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(top = 20.px)
+                    .fillMaxWidth(if(breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Empower(breakpoint)
-                Innovate(breakpoint)
-                Collaborate(breakpoint)
-                Citizenship(breakpoint)
-                Success(breakpoint)
+                WebService(breakpoint)
+                CloudService(breakpoint)
+                NetworkService(breakpoint)
+                SoftwareService(breakpoint)
+                DatabaseService(breakpoint)
+                Div(
+                    attrs = Modifier
+                        .color(Theme.Primary.rgb)
+                        .fillMaxWidth()
+                        .toAttrs()
+                ) {
+                    P(
+                        attrs = Modifier
+                            .fillMaxWidth()
+                            .textAlign(TextAlign.Center)
+                            .fontSize(if (breakpoint < Breakpoint.MD) 12.px else 20.px)
+                            .toAttrs()
+                    ){
+                        Text("Unleashing Digital Potential, Powering Your Success.")
+                    }
+                    P(
+                        attrs = Modifier
+                            .fillMaxWidth()
+                            .textAlign(TextAlign.Center)
+                            .fontSize(if (breakpoint < Breakpoint.MD) 12.px else 20.px)
+                            .toAttrs()
+                    ) {
+                        Link(
+                            modifier = NavigationItemStyle.toModifier()
+                                .fontSize(18.px)
+                                .fontWeight(FontWeight.SemiBold)
+                                .textDecorationLine(TextDecorationLine.None),
+                            path = Section.Contact.path,
+                            text = Section.Contact.title
+                        )
+                        Text(" for more information!")
+                    }
+                }
             }
             Footer(
                 attrs = Modifier
@@ -63,6 +102,8 @@ fun HomePage() {
             )
         }
         BackToTopButton()
-
+        if (menuOpened) {
+            OverflowMenu( onMenuClosed = { menuOpened = false} )
+        }
     }
 }

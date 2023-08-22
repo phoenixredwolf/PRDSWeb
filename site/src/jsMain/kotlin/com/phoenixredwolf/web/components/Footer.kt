@@ -89,13 +89,20 @@ fun FooterContent(breakpoint: Breakpoint) {
                 it.appendChild(script)
             }
         )
+        Box (
+            ref = ref {
+                val script = document.createElement("script")
+                script.asDynamic().src = "/js/prdsAdded.js"
+                it.appendChild(script)
+            }
+        )
 
     }
 }
 
 @Composable
 fun FooterMenu() {
-    Section.values().forEach { section ->  
+    Section.values().take(3).forEach { section ->
         Link(
             modifier = NavigationItemStyle.toModifier()
                 .fontFamily(FONT_FAMILY)

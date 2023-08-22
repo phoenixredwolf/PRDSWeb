@@ -3,7 +3,6 @@ package com.phoenixredwolf.web.components
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
-import com.phoenixredwolf.web.util.Constants.FONT_FAMILY
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -12,12 +11,14 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun SectionTitle(
+    breakpoint: Breakpoint,
     modifier: Modifier = Modifier,
     section: Section,
     alignment: Alignment.Horizontal = Alignment.CenterHorizontally
@@ -26,10 +27,10 @@ fun SectionTitle(
         modifier = modifier,
         horizontalAlignment = alignment
     ) {
-        if (section.title != "About") {
-            Title(section.title, alignment)
+        if (section.title != "About" && section.title != "Home") {
+            Title(section.title, alignment, breakpoint)
         }
-        Subtitle(section.subtitle, alignment)
+        Subtitle(section.subtitle, alignment, breakpoint)
         Box(
             modifier = Modifier
                 .height(2.px)
@@ -44,7 +45,8 @@ fun SectionTitle(
 @Composable
 private fun Title(
     title: String,
-    alignment: Alignment.Horizontal
+    alignment: Alignment.Horizontal,
+    breakpoint: Breakpoint
 ) {
     P(
         attrs = Modifier
@@ -53,8 +55,7 @@ private fun Title(
             .textAlign(
                 if (alignment == Alignment.CenterHorizontally) TextAlign.Center else TextAlign.Start
             )
-            .fontFamily(FONT_FAMILY)
-            .fontSize(25.px)
+            .fontSize(if (breakpoint <= Breakpoint.SM) 10.px else 25.px)
             .fontWeight(FontWeight.Normal)
             .color(Theme.Primary.rgb)
             .toAttrs()
@@ -66,7 +67,8 @@ private fun Title(
 @Composable
 private fun Subtitle(
     subtitle: String,
-    alignment: Alignment.Horizontal
+    alignment: Alignment.Horizontal,
+    breakpoint: Breakpoint
 ) {
     P(
         attrs = Modifier
@@ -75,8 +77,7 @@ private fun Subtitle(
             .textAlign(
                 if (alignment == Alignment.CenterHorizontally) TextAlign.Center else TextAlign.Start
             )
-            .fontFamily(FONT_FAMILY)
-            .fontSize(40.px)
+            .fontSize(if (breakpoint <= Breakpoint.SM) 15.px else 40.px)
             .fontWeight(FontWeight.SemiBold)
             .color(Theme.Secondary.rgb)
             .toAttrs()

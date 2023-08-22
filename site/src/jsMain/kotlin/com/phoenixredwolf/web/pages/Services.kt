@@ -1,10 +1,7 @@
 package com.phoenixredwolf.web.pages
 
-import androidx.compose.runtime.Composable
-import com.phoenixredwolf.web.components.BackToTopButton
-import com.phoenixredwolf.web.components.FooterContent
-import com.phoenixredwolf.web.components.Header
-import com.phoenixredwolf.web.components.SectionTitle
+import androidx.compose.runtime.*
+import com.phoenixredwolf.web.components.*
 import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
 import com.phoenixredwolf.web.util.Constants.FONT_FAMILY
@@ -32,14 +29,15 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun Services() {
     val breakpoint = rememberBreakpoint()
+    var menuOpened by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        Header(breakpoint)
+        Header(breakpoint, onMenuClicked = { menuOpened = true})
 
-        SectionTitle(section = Section.Services)
+        SectionTitle(section = Section.Services, breakpoint = breakpoint)
         Column(
             modifier = Modifier
                 .fillMaxHeight()
@@ -71,4 +69,7 @@ fun Services() {
         )
     }
     BackToTopButton()
+    if (menuOpened) {
+        OverflowMenu( onMenuClosed = { menuOpened = false} )
+    }
 }

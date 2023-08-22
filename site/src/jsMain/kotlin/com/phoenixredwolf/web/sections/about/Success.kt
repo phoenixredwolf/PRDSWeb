@@ -1,4 +1,4 @@
-package com.phoenixredwolf.web.sections.homepage
+package com.phoenixredwolf.web.sections.about
 
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Theme
@@ -10,6 +10,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
@@ -19,16 +20,15 @@ import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun Empower(breakpoint: Breakpoint) {
+fun Success(breakpoint: Breakpoint) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 20.px,bottom = 30.px)
-            .margin(top = 100.px),
+            .padding(bottom = 30.px)
+            .backgroundColor(Colors.WhiteSmoke),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         P(
@@ -38,27 +38,25 @@ fun Empower(breakpoint: Breakpoint) {
                     if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
                 .fontSize(if(breakpoint >= Breakpoint.LG) 45.px else 25.px)
                 .fontWeight(FontWeight.SemiBold)
-                .color(Theme.OnPrimaryContainer.rgb)
+                .color(Theme.Secondary.rgb)
                 .toAttrs()
         ) {
-            Text ("Empower Your Digital Success")
+            Text("Your Partner for Success")
         }
         SimpleGrid(modifier = Modifier.fillMaxWidth(
             if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
             numColumns = numColumns(base = 1, md = 2)
         ) {
-            EmpowerText(breakpoint)
-            EmpowerImage()
+            SuccessText(breakpoint)
+            SuccessImage()
         }
     }
 }
 
 @Composable
-private fun EmpowerText(breakpoint: Breakpoint) {
+private fun SuccessText(breakpoint: Breakpoint) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(topBottom = 10.px)
+        modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px)
     ) {
         P(
             attrs = Modifier
@@ -68,33 +66,27 @@ private fun EmpowerText(breakpoint: Breakpoint) {
                 .fontSize(if (breakpoint >= Breakpoint.LG) 25.px else 15.px)
                 .toAttrs()
         ) {
-            Text("At ")
-            Span(
-                attrs = Modifier
-                    .color(Theme.OnPrimaryContainer.rgb)
-                    .fontWeight(FontWeight.SemiBold)
-                    .toAttrs()
-            ){
-                Text("PhoenixRedwolf Digital Services")
-            }
-            Text(", we believe in the transformative power of technology. Our mission is to empower businesses " +
-                    "and organizations to thrive in the digital age by delivering exceptional technical consulting, " +
-                    "web development and administration, cloud migration, and network installation and " +
-                    "administration services.")
+            Text(
+                "With integrity and passion, we forge enduring partnerships with our clients, seeking to become " +
+                        "an extension of your teams. Together, we embrace challenges, conquer complexities, and " +
+                        "transform possibilities into realities. At PhoenixRedwolf Digital Services, we are the " +
+                        "catalyst for your digital journey, igniting the power of technology to drive lasting and " +
+                        "meaningful success for your business."
+            )
         }
     }
 }
 
 @Composable
-private fun EmpowerImage() {
+private fun SuccessImage() {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            src = Res.Image.empower,
-            desc = "Empowerment Image",
+            src = Res.Image.success,
+            desc = "Success Image",
             modifier = Modifier.fillMaxWidth(80.percent)
         )
     }

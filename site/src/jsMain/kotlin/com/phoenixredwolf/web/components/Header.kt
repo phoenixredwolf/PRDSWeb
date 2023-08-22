@@ -5,7 +5,6 @@ import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
 import com.phoenixredwolf.web.styles.LogoStyle
 import com.phoenixredwolf.web.styles.NavigationItemStyle
-import com.phoenixredwolf.web.util.Constants.FONT_FAMILY
 import com.phoenixredwolf.web.util.Res
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
@@ -24,7 +23,10 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 @Composable
-fun Header(breakpoint: Breakpoint) {
+fun Header(
+    breakpoint: Breakpoint,
+    onMenuClicked: () -> Unit
+) {
 
         Row(
             modifier = Modifier
@@ -33,7 +35,7 @@ fun Header(breakpoint: Breakpoint) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            LeftSide(breakpoint)
+            LeftSide(breakpoint, onMenuClicked)
             if (breakpoint > Breakpoint.MD) {
                 RightSide()
             }
@@ -43,13 +45,18 @@ fun Header(breakpoint: Breakpoint) {
 }
 
 @Composable
-fun LeftSide(breakpoint: Breakpoint) {
+fun LeftSide(
+    breakpoint: Breakpoint,
+    onMenuClicked: () -> Unit
+) {
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (breakpoint <= Breakpoint.MD) {
             FaBars(
-                modifier = Modifier.margin(right = 15.px),
+                modifier = Modifier
+                    .margin(right = 15.px)
+                    .onClick { onMenuClicked() },
                 size = IconSize.XL
             )
         }
@@ -86,13 +93,12 @@ fun RightSide() {
         Row(
             horizontalArrangement = Arrangement.End
         ) {
-            Section.values().forEach { section ->
+            Section.values().take(3).forEach { section ->
                 Link(
                     modifier = NavigationItemStyle.toModifier()
                         .padding(right = 30.px)
-                        .fontFamily(FONT_FAMILY)
                         .fontSize(18.px)
-                        .fontWeight(FontWeight.Normal)
+                        .fontWeight(FontWeight.SemiBold)
                         .textDecorationLine(TextDecorationLine.None),
                     path = section.path,
                     text = section.title

@@ -9,25 +9,25 @@ enum class Section(
     Home(
         id = "home",
         title = "Home",
-        subtitle = "",
+        subtitle = "How We Can Help You",
         path = "/"
     ),
     About(
         id = "about",
         title = "About",
-        subtitle = "Our Mission",
+        subtitle = "Who We Are",
         path = "/about"
-    ),
-    Services(
-        id = "services",
-        title = "Services",
-        subtitle = "What we do",
-        path = "/services"
     ),
     Contact(
         id = "contact",
         title = "Contact Us",
         subtitle = "Get in touch",
         path = "/contact"
+    ),
+    Services(
+        id = "services",
+        title = "Services",
+        subtitle = "What we do",
+        path = "/services"
     )
 }

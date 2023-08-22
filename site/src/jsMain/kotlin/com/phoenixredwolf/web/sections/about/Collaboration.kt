@@ -1,4 +1,4 @@
-package com.phoenixredwolf.web.sections.homepage
+package com.phoenixredwolf.web.sections.about
 
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Theme
@@ -20,10 +20,11 @@ import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun Innovate(breakpoint: Breakpoint) {
+fun Collaborate(breakpoint: Breakpoint) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,57 +37,63 @@ fun Innovate(breakpoint: Breakpoint) {
                 .textAlign(TextAlign.Center)
                 .fillMaxWidth(
                     if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
-                .fontSize(if(breakpoint >= Breakpoint.LG) 45.px else 25.px)
+                .fontSize(if(breakpoint >= Breakpoint.LG) 40.px else 25.px)
                 .fontWeight(FontWeight.SemiBold)
-                .color(Theme.OnSecondaryContainer.rgb)
+                .color(Theme.OnTertiaryContainer.rgb)
                 .toAttrs()
         ) {
-            Text("Innovative Solutions for Your Success")
+            Text ("Collaboration and Continuous Learning")
         }
         SimpleGrid(modifier = Modifier.fillMaxWidth(
             if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
             numColumns = numColumns(base = 1, md = 2)
         ) {
-            InnovateImage()
-            InnovateText(breakpoint)
+            CollaborateText(breakpoint)
+            CollaborateImage()
         }
     }
 }
 
 @Composable
-private fun InnovateText(breakpoint: Breakpoint) {
+private fun CollaborateText(breakpoint: Breakpoint) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(topBottom = 10.px)
     ) {
         P(
             attrs = Modifier
                 .fillMaxWidth()
-                .textAlign(TextAlign.Start)
+                .textAlign(TextAlign.End)
                 .margin(left = 20.px)
-                .fontSize(if (breakpoint >= Breakpoint.LG) 25.px else 15.px)
+                .fontSize(if (breakpoint >= Breakpoint.LG) 20.px else 15.px)
                 .toAttrs()
         ) {
-            Text(
-                "Our team of skilled professionals is dedicated to understanding your unique needs and " +
-                        "challenges.By leveraging cutting-edge technologies and industry best practices, we tailor our " +
-                        "services to offer bespoke solutions that optimize efficiency, enhance productivity, and foster " +
-                        "growth. You can trust us to deliver on time and within budget while maintaining the highest " +
-                        "standards of quality and security."
-            )
+            Text("At ")
+            Span(
+                attrs = Modifier
+                    .color(Theme.OnTertiaryContainer.rgb)
+                    .fontWeight(FontWeight.SemiBold)
+                    .toAttrs()
+            ){
+                Text("PhoenixRedwolf")
+            }
+            Text(", we foster a culture of collaboration and continuous learning. We stay at the forefront of " +
+                    "the rapidly evolving digital landscape to provide you with the most up-to-date and effective " +
+                    "strategies for success. Our transparent and customer-centric approach ensures open " +
+                    "communication and complete client satisfaction at every stage of the engagement.")
         }
     }
 }
 
 @Composable
-private fun InnovateImage() {
+private fun CollaborateImage() {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            src = Res.Image.solution,
-            desc = "Solution Image",
+            src = Res.Image.collaboration,
+            desc = "Collaboration Image",
             modifier = Modifier.fillMaxWidth(80.percent)
         )
     }
