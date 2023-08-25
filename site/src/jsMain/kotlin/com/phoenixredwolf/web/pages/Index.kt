@@ -4,7 +4,11 @@ import androidx.compose.runtime.*
 import com.phoenixredwolf.web.components.*
 import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
-import com.phoenixredwolf.web.sections.services.*
+import com.phoenixredwolf.web.sections.services.CloudService
+import com.phoenixredwolf.web.sections.services.DatabaseService
+import com.phoenixredwolf.web.sections.services.NetworkService
+import com.phoenixredwolf.web.sections.services.SoftwareService
+import com.phoenixredwolf.web.sections.services.web.WebService
 import com.phoenixredwolf.web.styles.NavigationItemStyle
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -22,6 +26,7 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.document
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
@@ -32,6 +37,14 @@ import org.jetbrains.compose.web.dom.Text
 @Page
 @Composable
 fun HomePage() {
+
+    val title = "Your Partner in Digital Solutions | Web and Software Development Services"
+    val description = "We offer expert web and software development, hosting, and administration services. Transform your ideas into reality with our cutting-edge solutions."
+
+    LaunchedEffect(title, description) {
+        document.title = title
+        document.querySelector("""meta[name="description"]""")!!.setAttribute("content", description)
+    }
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -105,5 +118,8 @@ fun HomePage() {
         if (menuOpened) {
             OverflowMenu( onMenuClosed = { menuOpened = false} )
         }
+    }
+    Box {
+
     }
 }

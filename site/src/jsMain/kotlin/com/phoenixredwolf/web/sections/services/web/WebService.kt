@@ -1,4 +1,4 @@
-package com.phoenixredwolf.web.sections.services
+package com.phoenixredwolf.web.sections.services.web
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -64,6 +64,7 @@ fun WebService(breakpoint: Breakpoint) {
         Div(
             attrs = Modifier
                 .classNames("flex-fill")
+                .padding(8.px)
                 .width(100.percent)
                 .toAttrs()
         ) {
