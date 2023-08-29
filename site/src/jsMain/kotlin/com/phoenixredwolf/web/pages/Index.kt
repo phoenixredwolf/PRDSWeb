@@ -6,15 +6,11 @@ import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
 import com.phoenixredwolf.web.sections.services.cloud.CloudService
 import com.phoenixredwolf.web.sections.services.database.DatabaseService
-import com.phoenixredwolf.web.sections.services.network.NetworkService
 import com.phoenixredwolf.web.sections.services.software.SoftwareService
 import com.phoenixredwolf.web.sections.services.web.WebService
 import com.phoenixredwolf.web.styles.NavigationItemStyle
 import com.phoenixredwolf.web.util.Res
-import com.varabyte.kobweb.compose.css.FontSize
-import com.varabyte.kobweb.compose.css.FontWeight
-import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.css.TextDecorationLine
+import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -32,10 +28,7 @@ import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.Footer
-import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Text
+import org.jetbrains.compose.web.dom.*
 
 @Page
 @Composable
@@ -82,12 +75,30 @@ fun HomePage() {
                         .textAlign(TextAlign.Justify)
                         .toAttrs()
                 ) {
-                    Text("Welcome to PhoenixRedwolf Digital Services – Your One-Stop Destination for Unleashing " +
+                    Text("Welcome to ")
+                    Span(
+                        attrs = Modifier
+                            .color(Theme.Secondary.rgb)
+                            .fontStyle(FontStyle.Italic)
+                            .toAttrs()
+                    ) {
+                        Text("PhoenixRedwolf Digital Services")
+                    }
+                    Text("– Your One-Stop Destination for Unleashing " +
                             "Digital Potential. Our expertise spans the dynamic realm of technology, offering a " +
                             "comprehensive suite of solutions to propel your business forward. From the intricate " +
                             "world of software development to harnessing the power of business cloud services, " +
                             "optimizing databases, crafting captivating web solutions, and seamlessly networking " +
-                            "systems, we are your trusted partners in realizing digital success. At PhoenixRedwolf, " +
+                            "systems, we are your trusted partners in realizing digital success. At ")
+                    Span(
+                        attrs = Modifier
+                            .color(Theme.Secondary.rgb)
+                            .fontStyle(FontStyle.Italic)
+                            .toAttrs()
+                    ) {
+                        Text("PhoenixRedwolf ")
+                    }
+                    Text(
                             "we fuse innovation, skill, and passion to transform ideas into reality, ensuring your " +
                             "journey through the digital landscape is marked by excellence and advancement. Explore " +
                             "our diverse range of services and let's embark on a journey of limitless possibilities " +
@@ -111,7 +122,7 @@ fun HomePage() {
                 DatabaseService(breakpoint)
                 WebService(breakpoint)
                 CloudService(breakpoint)
-                NetworkService(breakpoint)
+//                NetworkService(breakpoint)
                 Div(
                     attrs = Modifier
                         .color(Theme.Primary.rgb)
@@ -143,6 +154,16 @@ fun HomePage() {
                             path = Section.Contact.path,
                             text = Section.Contact.title
                         )
+                        Text(" or ")
+                        Link(
+                            modifier = NavigationItemStyle.toModifier()
+                                .fontSize(if (breakpoint < Breakpoint.MD) FontSize.Large else FontSize.XXLarge)
+                                .fontWeight(FontWeight.SemiBold)
+                                .textDecorationLine(TextDecorationLine.None),
+                        path = "https://calendly.com/admin-fjs/30min",
+                        text = "Schedule a call"
+                        )
+                        Br()
                         Text(" for more information!")
                     }
                 }
@@ -158,8 +179,5 @@ fun HomePage() {
         if (menuOpened) {
             OverflowMenu( onMenuClosed = { menuOpened = false} )
         }
-    }
-    Box {
-
     }
 }

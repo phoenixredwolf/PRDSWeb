@@ -137,7 +137,8 @@ fun Services() {
             )
         }
         Link(
-            path = "services/web"
+            path = "services/web",
+            modifier = Modifier
         ) {
             Column(
                 modifier = Modifier
@@ -171,6 +172,7 @@ fun Services() {
 
         P(
             attrs = Modifier
+                .id("webdev")
                 .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
                 .fontSize(if (breakpoint >= Breakpoint.MD) FontSize.Large else FontSize.Medium)
                 .textAlign(TextAlign.Justify)
@@ -238,58 +240,6 @@ fun Services() {
                         "you to do more, achieve more, and thrive in the digital era."
             )
         }
-        Link(
-            path = "services/network"
-        ) {
-            Column(
-                modifier = Modifier
-                    .padding(10.px),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                P(
-                    attrs = Modifier
-                        .textAlign(TextAlign.Center)
-                        .margin(bottom = 0.px)
-                        .color(Theme.Primary.rgb)
-                        .fontWeight(FontWeight.SemiBold)
-                        .fontSize(FontSize.Large)
-                        .toAttrs()
-                ) {
-                    Text("Networking Services")
-                }
-                P(
-                    attrs = Modifier
-                        .fillMaxWidth()
-                        .textAlign(TextAlign.Center)
-                        .color(Theme.Secondary.rgb)
-                        .fontWeight(FontWeight.Normal)
-                        .fontSize(FontSize.Medium)
-                        .toAttrs()
-                ){
-                    Text("Click for available services")
-                }
-            }
-        }
-
-        P(
-            attrs = Modifier
-                .fillMaxWidth(if (breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
-                .fontSize(if (breakpoint >= Breakpoint.MD) FontSize.Large else FontSize.Medium)
-                .textAlign(TextAlign.Justify)
-                .toAttrs()
-        ) {
-            Text(
-                "Unleash the potential of seamless connectivity with our comprehensive computer networking " +
-                        "services at PhoenixRedwolf Digital Services. In today's interconnected world, a strong " +
-                        "and reliable network is the backbone of successful operations. Our networking experts design, " +
-                        "configure, and manage networks that not only facilitate communication but also empower " +
-                        "collaboration and growth. Whether it's LAN installation, WAN optimization, or network " +
-                        "security enhancements, we're dedicated to creating solutions that keep your systems running " +
-                        "smoothly and securely. Trust us to build the pathways that keep your business connected and " +
-                        "thriving in the digital landscape."
-            )
-        }
-
 
         Footer(
             attrs = Modifier

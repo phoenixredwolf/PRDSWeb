@@ -59,7 +59,7 @@ val LogoStyle by ComponentStyle {
 val NavigationItemStyle by ComponentStyle {
     base {
         Modifier
-            .color(Theme.Primary.rgb)
+            .color(Theme.OnPrimary.rgb)
             .transition(CSSTransition(property = "color", duration = 200.ms))
     }
     anyLink {
@@ -68,6 +68,21 @@ val NavigationItemStyle by ComponentStyle {
     }
     hover {
         Modifier.color(Theme.Secondary.rgb)
+    }
+}
+
+val FooterItemStyle by ComponentStyle {
+    base {
+        Modifier
+            .color(Theme.OnPrimary.rgb)
+            .transition(CSSTransition(property = "color", duration = 200.ms))
+    }
+    anyLink {
+        Modifier
+            .color(Theme.OnPrimary.rgb)
+    }
+    hover {
+        Modifier.color(Theme.OnSecondary.rgb)
     }
 }
 

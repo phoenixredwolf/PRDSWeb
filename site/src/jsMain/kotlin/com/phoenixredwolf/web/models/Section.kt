@@ -60,5 +60,16 @@ enum class Section: Data {
             get() = "Full Service Website Development"
         override val path: String
             get() = "/services/webdev"
+    },
+    Software{
+        override val id: String
+            get() = "software"
+        override val title: String
+            get() = "Software Development"
+        override val subtitle: String
+            get() = "Crafting Innovative Solutions for Desktop and Mobile Platforms"
+        override val path: String
+            get() = "/services/software"
+
     }
 }

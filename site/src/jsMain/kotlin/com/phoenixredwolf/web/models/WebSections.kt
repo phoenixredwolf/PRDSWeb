@@ -9,7 +9,7 @@ enum class WebSections: Data {
         override val subtitle: String
             get() = "Full Site Development"
         override val path: String
-            get() = "/services#webdev"
+            get() = "services/web#webdev"
 
     },
     HOSTING {
@@ -20,7 +20,7 @@ enum class WebSections: Data {
         override val subtitle: String
             get() = "We can host your site"
         override val path: String
-            get() = "/services#hosting"
+            get() = "services/web#hosting"
 
     },
     ADMIN {
@@ -31,7 +31,7 @@ enum class WebSections: Data {
         override val subtitle: String
             get() = "We can handle running your site for you"
         override val path: String
-            get() = "/services#admin"
+            get() = "services/web#admin"
 
     }
 }

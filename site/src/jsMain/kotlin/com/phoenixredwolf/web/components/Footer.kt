@@ -3,12 +3,9 @@ package com.phoenixredwolf.web.components
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
-import com.phoenixredwolf.web.styles.NavigationItemStyle
+import com.phoenixredwolf.web.styles.FooterItemStyle
 import com.phoenixredwolf.web.util.Res
-import com.varabyte.kobweb.compose.css.FontSize
-import com.varabyte.kobweb.compose.css.FontWeight
-import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.css.TextDecorationLine
+import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.dom.ref
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -37,7 +34,7 @@ fun FooterContent(breakpoint: Breakpoint) {
         modifier = Modifier
             .classNames("footer")
             .fillMaxSize()
-            .backgroundColor(Theme.PrimaryContainer.rgb),
+            .backgroundColor(Theme.Primary.rgb),
         contentAlignment = Alignment.Center
     ) {
         if (breakpoint >= Breakpoint.MD){
@@ -68,24 +65,18 @@ fun FooterHorizontal(breakpoint: Breakpoint) {
     Column(
         modifier = Modifier
             .fillMaxWidth(80.percent)
-            .fillMaxHeight()
-            .margin(topBottom = 50.px)
-            .padding(topBottom = 50.px),
+            .padding(topBottom = 25.px)
+            .margin(topBottom = 25.px)
+            .fillMaxHeight(),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
         ){
-            FooterLogo()
-            FooterMenu(breakpoint)
-        }
-        SocialBar(true)
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
+            SocialBar(true)
             Link(
                 modifier = Modifier
                     .padding(top = 10.px)
@@ -101,7 +92,7 @@ fun FooterHorizontal(breakpoint: Breakpoint) {
                     .textAlign(TextAlign.Center)
                     .fontSize(FontSize.Small)
                     .color(Theme.OnPrimaryContainer.rgb)
-                    .padding(top = 10.px)
+                    .padding(top = 25.px)
                     .toAttrs()
             ) {
                 FaCopyright(
@@ -109,9 +100,8 @@ fun FooterHorizontal(breakpoint: Breakpoint) {
                 )
                 Text("${Date().getFullYear()} All Rights Reserved")
             }
-
+            FooterMenu(breakpoint)
         }
-
     }
 }
 
@@ -121,17 +111,17 @@ fun FooterVertical(breakpoint: Breakpoint) {
         modifier = Modifier
             .fillMaxWidth(90.percent)
             .fillMaxHeight()
-            .margin(topBottom = 50.px)
-            .padding(topBottom = 50.px),
+            .padding(topBottom = 25.px)
+            .margin(topBottom = 25.px),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        FooterLogo()
-        FooterMenu(breakpoint, true)
         SocialBar(true)
+        FooterMenu(breakpoint, true)
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Link(
                 modifier = Modifier
@@ -145,14 +135,15 @@ fun FooterVertical(breakpoint: Breakpoint) {
             }
             P(
                 attrs = Modifier
+                    .alignContent(AlignContent.Center)
                     .textAlign(TextAlign.Center)
                     .fontSize(FontSize.XSmall)
                     .color(Theme.OnPrimaryContainer.rgb)
-                    .padding(top = 10.px)
+                    .padding(top = 30.px)
                     .toAttrs()
             ) {
                 FaCopyright(
-                    modifier = Modifier.padding(right = 10.px)
+                    modifier = Modifier.padding(right = 10.px, bottom = 0.px)
                 )
                 Text("${Date().getFullYear()} All Rights Reserved")
             }
@@ -163,14 +154,14 @@ fun FooterVertical(breakpoint: Breakpoint) {
 @Composable
 fun FooterMenu(breakpoint: Breakpoint, vert: Boolean = false) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+//        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = if(vert) Arrangement.Center else Arrangement.End,
         verticalAlignment = Alignment.CenterVertically
     ) {
 
         Section.values().take(3).forEach { section ->
             Link(
-                modifier = NavigationItemStyle.toModifier()
+                modifier = FooterItemStyle.toModifier()
                     .padding(right = 20.px)
                     .fontSize(if (breakpoint >= Breakpoint.MD) FontSize.Large else FontSize.Medium)
                     .fontWeight(FontWeight.Normal)

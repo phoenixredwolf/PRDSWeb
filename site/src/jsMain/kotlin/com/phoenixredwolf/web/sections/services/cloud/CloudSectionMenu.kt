@@ -33,8 +33,8 @@ fun CloudSectionMenu(breakpoint: Breakpoint) {
     } else {
         Column(
             modifier = Modifier
-                .height(36.px)
-                .padding(10.px)
+                .fillMaxHeight()
+                .padding(bottom = 10.px)
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
