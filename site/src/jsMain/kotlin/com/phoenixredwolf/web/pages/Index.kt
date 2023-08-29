@@ -4,12 +4,14 @@ import androidx.compose.runtime.*
 import com.phoenixredwolf.web.components.*
 import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
-import com.phoenixredwolf.web.sections.services.CloudService
-import com.phoenixredwolf.web.sections.services.DatabaseService
-import com.phoenixredwolf.web.sections.services.NetworkService
-import com.phoenixredwolf.web.sections.services.SoftwareService
+import com.phoenixredwolf.web.sections.services.cloud.CloudService
+import com.phoenixredwolf.web.sections.services.database.DatabaseService
+import com.phoenixredwolf.web.sections.services.network.NetworkService
+import com.phoenixredwolf.web.sections.services.software.SoftwareService
 import com.phoenixredwolf.web.sections.services.web.WebService
 import com.phoenixredwolf.web.styles.NavigationItemStyle
+import com.phoenixredwolf.web.util.Res
+import com.varabyte.kobweb.compose.css.FontSize
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TextDecorationLine
@@ -22,6 +24,7 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
@@ -59,6 +62,42 @@ fun HomePage() {
             val breakpoint = rememberBreakpoint()
             Header(breakpoint, onMenuClicked = { menuOpened = true})
 
+            Column(
+                modifier = Modifier
+                    .padding(topBottom = 20.px)
+                    .fillMaxWidth(if(breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Image(
+                    src = if (breakpoint <= Breakpoint.SM) Res.Image.tag2 else Res.Image.tag1,
+                    modifier = Modifier
+                        .width(if(breakpoint >= Breakpoint.MD) 80.percent else 90.percent)
+                        .padding(topBottom = 10.px)
+                )
+                P(
+                    attrs = Modifier
+                        .padding(bottom = 10.px)
+                        .fillMaxWidth()
+                        .fontSize(if (breakpoint < Breakpoint.MD) FontSize.Medium else FontSize.Large)
+                        .textAlign(TextAlign.Justify)
+                        .toAttrs()
+                ) {
+                    Text("Welcome to PhoenixRedwolf Digital Services – Your One-Stop Destination for Unleashing " +
+                            "Digital Potential. Our expertise spans the dynamic realm of technology, offering a " +
+                            "comprehensive suite of solutions to propel your business forward. From the intricate " +
+                            "world of software development to harnessing the power of business cloud services, " +
+                            "optimizing databases, crafting captivating web solutions, and seamlessly networking " +
+                            "systems, we are your trusted partners in realizing digital success. At PhoenixRedwolf, " +
+                            "we fuse innovation, skill, and passion to transform ideas into reality, ensuring your " +
+                            "journey through the digital landscape is marked by excellence and advancement. Explore " +
+                            "our diverse range of services and let's embark on a journey of limitless possibilities " +
+                            "together.")
+                }
+                Image(
+                    src = Res.Image.icon
+                )
+            }
+
             SectionTitle(section = Section.Home, breakpoint = breakpoint)
 
             Column(
@@ -68,11 +107,11 @@ fun HomePage() {
                     .fillMaxWidth(if(breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                SoftwareService(breakpoint)
+                DatabaseService(breakpoint)
                 WebService(breakpoint)
                 CloudService(breakpoint)
                 NetworkService(breakpoint)
-                SoftwareService(breakpoint)
-                DatabaseService(breakpoint)
                 Div(
                     attrs = Modifier
                         .color(Theme.Primary.rgb)
@@ -83,21 +122,22 @@ fun HomePage() {
                         attrs = Modifier
                             .fillMaxWidth()
                             .textAlign(TextAlign.Center)
-                            .fontSize(if (breakpoint < Breakpoint.MD) 12.px else 20.px)
+                            .fontSize(if (breakpoint < Breakpoint.MD) FontSize.Medium else FontSize.XLarge)
+                            .color(Theme.Secondary.rgb)
                             .toAttrs()
                     ){
-                        Text("Unleashing Digital Potential, Powering Your Success.")
+                        Text("Unleashing Digital Excellence: Your Path to Success!")
                     }
                     P(
                         attrs = Modifier
                             .fillMaxWidth()
                             .textAlign(TextAlign.Center)
-                            .fontSize(if (breakpoint < Breakpoint.MD) 12.px else 20.px)
+                            .fontSize(if (breakpoint < Breakpoint.MD) FontSize.Medium else FontSize.XLarge)
                             .toAttrs()
                     ) {
                         Link(
                             modifier = NavigationItemStyle.toModifier()
-                                .fontSize(18.px)
+                                .fontSize(if (breakpoint < Breakpoint.MD) FontSize.Large else FontSize.XXLarge)
                                 .fontWeight(FontWeight.SemiBold)
                                 .textDecorationLine(TextDecorationLine.None),
                             path = Section.Contact.path,

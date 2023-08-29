@@ -1,4 +1,4 @@
-package com.phoenixredwolf.web.pages
+package com.phoenixredwolf.web.sections.services
 
 import androidx.compose.runtime.*
 import com.phoenixredwolf.web.components.BackToTopButton
@@ -24,9 +24,9 @@ import kotlinx.browser.document
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.dom.Footer
 
-@Page
+@Page("/services/")
 @Composable
-fun About() {
+fun Networks(){
     var menuOpened by remember { mutableStateOf(false) }
     val title = "About Us - Your Trusted Partner in Digital Solutions | Phoenixredwolf Digital Services"
     val description = "Discover the story behind PhoenixRedwolf Digital Services – a leading provider of web development, software solutions, and digital services. Learn about our mission, expertise, and commitment to transforming ideas into powerful realities."

@@ -20,13 +20,19 @@ object Constants {
 
 object Res{
     object Image {
-        const val logo = "PRDSLogo.svg"
-        const val icon = "PRDSIcon.svg"
-        const val collaboration = "collaboration-600x340.jpg"
-        const val corporate = "corporate-600x434.jpg"
-        const val empower = "empower-600x394.jpg"
-        const val solution = "solutions-600x360.jpg"
-        const val success = "success-600x344.jpg"
+        const val logo = "/images/PRDSLogo.svg"
+        const val icon = "/images/PRDSIcon.svg"
+        const val collaboration = "/images/collaboration-600x340.jpg"
+        const val corporate = "/images/corporate-600x434.jpg"
+        const val empower = "/images/empower-600x394.jpg"
+        const val solution = "/images/solutions-600x360.jpg"
+        const val success = "/images/success-600x344.jpg"
+        const val cloud = "/images/cloudbase2.jpg"
+        const val webdev = "/images/webdev.jpg"
+        const val softdev = "/images/softdev.jpg"
+        const val netAdmin = "/images/networkAdmin.jpg"
+        const val tag1 = "/images/tagline1.svg"
+        const val tag2 = "/images/tagline2.svg"
     }
 }
 

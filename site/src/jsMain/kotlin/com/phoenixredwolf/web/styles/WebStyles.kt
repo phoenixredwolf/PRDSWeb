@@ -70,3 +70,20 @@ val NavigationItemStyle by ComponentStyle {
         Modifier.color(Theme.Secondary.rgb)
     }
 }
+
+val SectionMenuStyle by ComponentStyle {
+    base {
+        Modifier
+            .color(Theme.OnSecondaryContainer.rgb)
+            .transition(CSSTransition(property = "color", duration = 200.ms))
+    }
+    anyLink {
+        Modifier
+            .color(Theme.OnSecondaryContainer.rgb)
+    }
+    hover {
+        Modifier.color(Theme.Error.rgb)
+    }
+}
+
+

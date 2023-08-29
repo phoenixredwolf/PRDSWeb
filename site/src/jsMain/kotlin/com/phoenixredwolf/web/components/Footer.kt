@@ -2,9 +2,10 @@ package com.phoenixredwolf.web.components
 
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Section
+import com.phoenixredwolf.web.models.Theme
 import com.phoenixredwolf.web.styles.NavigationItemStyle
-import com.phoenixredwolf.web.util.Constants.FONT_FAMILY
 import com.phoenixredwolf.web.util.Res
+import com.varabyte.kobweb.compose.css.FontSize
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TextDecorationLine
@@ -15,7 +16,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
@@ -28,59 +28,22 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
+import kotlin.js.Date
 
 @Composable
 fun FooterContent(breakpoint: Breakpoint) {
+
     Box(
         modifier = Modifier
             .classNames("footer")
             .fillMaxSize()
-            .backgroundColor(Colors.Black),
+            .backgroundColor(Theme.PrimaryContainer.rgb),
         contentAlignment = Alignment.Center
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth(if(breakpoint > Breakpoint.MD) 80.percent else 90.percent)
-                .fillMaxHeight()
-                .margin(topBottom = 50.px)
-                .padding(topBottom = 50.px),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
-        )  {
-            Image(
-                src = Res.Image.logo,
-                modifier = Modifier.width(200.px)
-            )
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                FooterMenu()
-            }
-            SocialBar(true)
-            P(
-                attrs = Modifier
-                    .padding(top = 10.px)
-                    .textAlign(TextAlign.Center)
-                    .fontSize(if (breakpoint >= Breakpoint.LG) 15.px else 8.px)
-                    .color(Colors.White)
-                    .toAttrs()
-            ) {
-                Text("This page created with Kobweb")
-            }
-            P(
-                attrs = Modifier
-                    .textAlign(TextAlign.Center)
-                    .fontSize(if (breakpoint >= Breakpoint.LG) 15.px else 10.px)
-                    .color(Colors.White)
-                    .toAttrs()
-            ) {
-                FaCopyright(
-
-                )
-                Text("   2023")
-            }
+        if (breakpoint >= Breakpoint.MD){
+            FooterHorizontal(breakpoint)
+        } else {
+            FooterVertical(breakpoint)
         }
         Box (
             ref = ref {
@@ -101,17 +64,129 @@ fun FooterContent(breakpoint: Breakpoint) {
 }
 
 @Composable
-fun FooterMenu() {
-    Section.values().take(3).forEach { section ->
-        Link(
-            modifier = NavigationItemStyle.toModifier()
-                .fontFamily(FONT_FAMILY)
-                .padding(right = 20.px)
-                .fontSize(12.px)
-                .fontWeight(FontWeight.Normal)
-                .textDecorationLine(TextDecorationLine.None),
-            path = section.path,
-            text = section.title
-        )
+fun FooterHorizontal(breakpoint: Breakpoint) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth(80.percent)
+            .fillMaxHeight()
+            .margin(topBottom = 50.px)
+            .padding(topBottom = 50.px),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            FooterLogo()
+            FooterMenu(breakpoint)
+        }
+        SocialBar(true)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Link(
+                modifier = Modifier
+                    .padding(top = 10.px)
+                    .textAlign(TextAlign.Center)
+                    .fontSize(FontSize.Small)
+                    .color(Theme.OnPrimaryContainer.rgb),
+                path = Section.Privacy.path
+            ) {
+                Text("Privacy Policy")
+            }
+            P(
+                attrs = Modifier
+                    .textAlign(TextAlign.Center)
+                    .fontSize(FontSize.Small)
+                    .color(Theme.OnPrimaryContainer.rgb)
+                    .padding(top = 10.px)
+                    .toAttrs()
+            ) {
+                FaCopyright(
+                    modifier = Modifier.padding(right = 10.px)
+                )
+                Text("${Date().getFullYear()} All Rights Reserved")
+            }
+
+        }
+
     }
 }
+
+@Composable
+fun FooterVertical(breakpoint: Breakpoint) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth(90.percent)
+            .fillMaxHeight()
+            .margin(topBottom = 50.px)
+            .padding(topBottom = 50.px),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        FooterLogo()
+        FooterMenu(breakpoint, true)
+        SocialBar(true)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Link(
+                modifier = Modifier
+                    .padding(top = 10.px)
+                    .textAlign(TextAlign.Center)
+                    .fontSize(FontSize.XSmall)
+                    .color(Theme.OnPrimaryContainer.rgb),
+                path = Section.Privacy.path
+            ) {
+                Text("Privacy Policy")
+            }
+            P(
+                attrs = Modifier
+                    .textAlign(TextAlign.Center)
+                    .fontSize(FontSize.XSmall)
+                    .color(Theme.OnPrimaryContainer.rgb)
+                    .padding(top = 10.px)
+                    .toAttrs()
+            ) {
+                FaCopyright(
+                    modifier = Modifier.padding(right = 10.px)
+                )
+                Text("${Date().getFullYear()} All Rights Reserved")
+            }
+        }
+    }
+}
+
+@Composable
+fun FooterMenu(breakpoint: Breakpoint, vert: Boolean = false) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = if(vert) Arrangement.Center else Arrangement.End,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+
+        Section.values().take(3).forEach { section ->
+            Link(
+                modifier = NavigationItemStyle.toModifier()
+                    .padding(right = 20.px)
+                    .fontSize(if (breakpoint >= Breakpoint.MD) FontSize.Large else FontSize.Medium)
+                    .fontWeight(FontWeight.Normal)
+                    .textDecorationLine(TextDecorationLine.None),
+                path = section.path,
+                text = section.title
+            )
+        }
+    }
+}
+
+@Composable
+fun FooterLogo() {
+    Image(
+        src = Res.Image.logo,
+        modifier = Modifier.width(300.px)
+    )
+}
+

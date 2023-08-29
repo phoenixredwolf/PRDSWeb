@@ -45,6 +45,14 @@ fun OverflowMenu(onMenuClosed: () -> Unit) {
             .opacity(opacity)
             .backgroundColor(argb(a = 0.5f, r = 0.0f, g = 0.0f, b = 0.0f))
             .transition(CSSTransition(property = "opacity", duration = 500.ms))
+            .onClick {
+                scope.launch {
+                    translateX = (-100).percent
+                    opacity = 0.percent
+                    delay(250)
+                    onMenuClosed()
+                }
+            }
     ) {
         Column(
             modifier = Modifier
@@ -81,7 +89,7 @@ fun OverflowMenu(onMenuClosed: () -> Unit) {
                     desc = "Logo Image"
                 )
             }
-            Section.values().take(3).forEach { section ->
+            Section.values().take(4).forEach { section ->
                 Link(
                     modifier = NavigationItemStyle.toModifier()
                         .padding(bottom = 10.px)
@@ -92,7 +100,7 @@ fun OverflowMenu(onMenuClosed: () -> Unit) {
                             scope.launch {
                                 translateX = (-100).percent
                                 opacity = 0.percent
-                                delay(500)
+                                delay(250)
                                 onMenuClosed()
                             }
                         },

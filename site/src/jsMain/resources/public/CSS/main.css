@@ -36,7 +36,7 @@
     background-color: #eee;
     color: #0054d6;
     cursor: pointer;
-    padding: 18px;
+    /*padding: 18px;*/
     width: 100%;
     border: none;
     text-align: left;
@@ -50,4 +50,8 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+.isolate {
+    isolation: isolate;
 }

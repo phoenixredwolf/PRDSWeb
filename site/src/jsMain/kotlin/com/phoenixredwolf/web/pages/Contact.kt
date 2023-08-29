@@ -21,6 +21,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaPhone
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.document
 import org.jetbrains.compose.web.css.AlignContent
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -34,6 +35,15 @@ import org.jetbrains.compose.web.dom.Text
 fun Contact() {
     var menuOpened by remember { mutableStateOf(false) }
     val breakpoint = rememberBreakpoint()
+
+    val title = "Get in Touch - Contact Phoenixredwolf Digital Services for Digital Solutions"
+    val description = "Reach out to Phoenixredwolf Digital Services for tailored digital services including web and software development, hosting, and more. Contact us today to discuss your project and turn your vision into reality."
+
+    LaunchedEffect(title, description) {
+        document.title = title
+        document.querySelector("""meta[name="description"]""")!!.setAttribute("content", description)
+    }
+
     Column(
         modifier = Modifier
             .backgroundColor(Colors.WhiteSmoke)
@@ -105,7 +115,7 @@ fun PhoneContact(breakpoint: Breakpoint) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 10.px)
-            .fontSize(if(breakpoint<=Breakpoint.SM) FontSize.Small else FontSize.XXLarge)
+            .fontSize(if(breakpoint<=Breakpoint.SM) FontSize.Medium else FontSize.XXLarge)
             .fontWeight(FontWeight.SemiBold)
             .color(Theme.Primary.rgb),
         horizontalArrangement = Arrangement.Center,
@@ -125,7 +135,7 @@ fun EmailContact(breakpoint: Breakpoint) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 10.px)
-            .fontSize(if(breakpoint<=Breakpoint.SM) FontSize.Small else FontSize.XXLarge)
+            .fontSize(if(breakpoint<=Breakpoint.SM) FontSize.Medium else FontSize.XXLarge)
             .fontWeight(FontWeight.SemiBold)
             .color(Theme.Primary.rgb),
         horizontalArrangement = Arrangement.Center,

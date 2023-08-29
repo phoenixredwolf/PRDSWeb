@@ -93,7 +93,7 @@ fun RightSide() {
         Row(
             horizontalArrangement = Arrangement.End
         ) {
-            Section.values().take(3).forEach { section ->
+            Section.values().take(4).forEach { section ->
                 Link(
                     modifier = NavigationItemStyle.toModifier()
                         .padding(right = 30.px)

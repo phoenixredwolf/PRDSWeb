@@ -1,4 +1,4 @@
-package com.phoenixredwolf.web.sections.services.web
+package com.phoenixredwolf.web.sections.services.cloud
 
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Theme
@@ -10,7 +10,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.icons.fa.FaCode
+import com.varabyte.kobweb.silk.components.icons.fa.FaCloud
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.percent
@@ -20,7 +20,7 @@ import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun WebService(breakpoint: Breakpoint) {
+fun CloudService(breakpoint: Breakpoint) {
     Button(
         attrs = Modifier
             .attrsModifier {
@@ -31,10 +31,10 @@ fun WebService(breakpoint: Breakpoint) {
             .fontSize(if (breakpoint < Breakpoint.MD) FontSize.Medium else FontSize.Large)
             .toAttrs()
     ) {
-        WebLeft(breakpoint)
-       if (breakpoint >= Breakpoint.MD) {
-           WebRight()
-       }
+        CloudLeft(breakpoint)
+        if (breakpoint >= Breakpoint.MD) {
+            CloudRight()
+        }
     }
     Div(
         attrs = Modifier
@@ -48,12 +48,12 @@ fun WebService(breakpoint: Breakpoint) {
             .textAlign(TextAlign.Center)
             .toAttrs()
     ) {
-        WebSectionMenu(breakpoint)
+        CloudSectionMenu(breakpoint)
     }
 }
 
 @Composable
-private fun WebLeft(breakpoint: Breakpoint){
+private fun CloudLeft(breakpoint: Breakpoint) {
     Div(
         attrs = Modifier
             .classNames("p-2")
@@ -63,7 +63,7 @@ private fun WebLeft(breakpoint: Breakpoint){
             .alignContent(AlignContent.Center)
             .toAttrs()
     ) {
-        FaCode(
+        FaCloud(
             size = if(breakpoint >= Breakpoint.MD ) IconSize.XXL else IconSize.LG,
             modifier = Modifier
                 .color(Theme.OnSurface.rgb)
@@ -80,12 +80,12 @@ private fun WebLeft(breakpoint: Breakpoint){
             .padding(top = 10.px)
             .toAttrs()
     ){
-        Text("Web")
+        Text("Cloud")
     }
 }
 
 @Composable
-private fun WebRight() {
+private fun CloudRight(){
     Div(
         attrs = Modifier
             .attrsModifier {
@@ -97,7 +97,6 @@ private fun WebRight() {
             .color(Theme.OnSecondaryContainer.rgb)
             .toAttrs()
     ){
-        Text("Turning Vision into Virtual Reality")
+        Text("Elevate, Innovate, and Scale in the Cloud")
     }
-
 }
