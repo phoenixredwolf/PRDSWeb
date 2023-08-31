@@ -21,6 +21,7 @@ object Constants {
 object Res{
     object Image {
         const val logo = "/images/PRDSLogo.svg"
+        const val logo2 = "/images/PRDSLogo2.svg"
         const val icon = "/images/PRDSIcon.svg"
         const val collaboration = "/images/collaboration-600x340.jpg"
         const val corporate = "/images/corporate-600x434.jpg"

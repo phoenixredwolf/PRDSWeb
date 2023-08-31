@@ -51,14 +51,16 @@ fun Contact() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
+        ContactHeader(breakpoint)
         Header(breakpoint, onMenuClicked = { menuOpened = true})
-        SectionTitle(section = Section.Contact, breakpoint = breakpoint)
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .fillMaxWidth(if(breakpoint >= Breakpoint.MD) 80.percent else 90.percent),
+                .padding(top = 220.px)
+                .fillMaxWidth(90.percent),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            SectionTitle(section = Section.Contact, breakpoint = breakpoint)
             ContactContent()
         }
         Footer(

@@ -3,10 +3,7 @@ package com.phoenixredwolf.web.styles
 import com.phoenixredwolf.web.models.Theme
 import com.varabyte.kobweb.compose.css.CSSTransition
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.color
-import com.varabyte.kobweb.compose.ui.modifiers.transform
-import com.varabyte.kobweb.compose.ui.modifiers.transition
-import com.varabyte.kobweb.compose.ui.styleModifier
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.anyLink
 import com.varabyte.kobweb.silk.components.style.hover
@@ -21,25 +18,6 @@ val SocialLinkStyle by ComponentStyle {
     }
     hover {
         Modifier.color(Theme.Primary.rgb)
-    }
-}
-
-
-@OptIn(ExperimentalComposeWebApi::class)
-val MainImageStyle by ComponentStyle {
-    base {
-        Modifier
-            .styleModifier {
-                filter {
-                    grayscale(100.percent)
-                }
-            }
-            .transition(CSSTransition(property = "filter", duration = 200.ms))
-    }
-    hover {
-        Modifier.styleModifier {
-            filter { grayscale(0.percent) }
-        }
     }
 }
 
@@ -101,4 +79,22 @@ val SectionMenuStyle by ComponentStyle {
     }
 }
 
-
+val IndexPageButtonStyle by ComponentStyle {
+    base {
+        Modifier
+            .width(50.percent)
+            .height(40.px)
+            .backgroundColor(Theme.Secondary.rgb)
+            .transition(
+                CSSTransition(property = "width", duration = 200.ms),
+                CSSTransition(property = "backgroundColor", duration = 200.ms),
+                CSSTransition(property = "height", duration = 200.ms)
+            )
+    }
+    hover {
+        Modifier
+            .width(60.percent)
+            .height(45.px)
+            .backgroundColor(Theme.Primary.rgb)
+    }
+}

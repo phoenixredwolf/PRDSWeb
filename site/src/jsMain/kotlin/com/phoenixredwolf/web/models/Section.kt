@@ -11,6 +11,16 @@ enum class Section: Data {
         override val path: String
             get() = "/"
     },
+    Services {
+        override val id: String
+            get() = "services"
+        override val title: String
+            get() = "Services"
+        override val subtitle: String
+            get() = "What we do"
+        override val path: String
+            get() = "/services"
+    },
     About {
         override val id: String
             get() = "about"
@@ -30,16 +40,6 @@ enum class Section: Data {
             get() = "Get in touch"
         override val path: String
             get() = "/contact"
-    },
-    Services {
-        override val id: String
-            get() = "services"
-        override val title: String
-            get() = "Services"
-        override val subtitle: String
-            get() = "What we do"
-        override val path: String
-            get() = "/services"
     },
     Privacy {
         override val id: String
