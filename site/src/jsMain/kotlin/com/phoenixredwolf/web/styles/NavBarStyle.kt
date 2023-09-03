@@ -54,9 +54,7 @@ val NavStyle by ComponentStyle {
         Modifier
             .position(Position.Absolute)
             .transform {
-//                translateX()
-//                translateY()
-                translate3d((-500).px,5.px,(-5).px)
+                translate3d((-500).px,5.px,0.px)
             }
             .zIndex(-0.1)
             .width(Width.MaxContent)

@@ -145,7 +145,7 @@ fun NavBar2() {
             attrs = NavStyle.toModifier()
                 .classNames("nav-bar")
                 .borderRadius(r = 20.px)
-                .fillMaxWidth(40.percent)
+                .width(Width.FitContent)
                 .toAttrs()
         ) {
             Li(
@@ -192,7 +192,6 @@ fun NavBar2() {
                         .attrsModifier {
                             attr("class", "services")
                         }
-                        .width(Width.MaxContent)
                         .toAttrs()
                 ) {
                     Div(
@@ -211,7 +210,7 @@ fun NavBar2() {
                         attr("class", "nav-bar nav-bar_item")
                     }
                     .borderRadius(r = 20.px)
-                    .padding(right = 20.px)
+                    .padding(leftRight = 20.px)
                     .toAttrs()
             ) {
                 Link(
