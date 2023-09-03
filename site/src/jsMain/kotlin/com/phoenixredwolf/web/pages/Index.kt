@@ -164,15 +164,6 @@ fun HomePage() {
                 }
                 ContactOrSched(breakpoint, "To Get Started!")
             }
-//            Column(
-//                modifier = Modifier
-//                    .height(200.px)
-//                    .fillMaxWidth(90.percent)
-//                    .padding(topBottom = 40.px),
-//                horizontalAlignment = Alignment.CenterHorizontally,
-//                verticalArrangement = Arrangement.Center
-//            ) {
-//            }
             Footer(
                 attrs = Modifier
                     .fillMaxWidth()

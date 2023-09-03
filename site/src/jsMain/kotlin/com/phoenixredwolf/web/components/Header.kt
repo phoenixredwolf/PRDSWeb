@@ -1,15 +1,12 @@
 package com.phoenixredwolf.web.components
 
 import androidx.compose.runtime.Composable
-import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
 import com.phoenixredwolf.web.styles.LogoStyle
-import com.phoenixredwolf.web.styles.NavigationItemStyle
+import com.phoenixredwolf.web.styles.NavStyle
 import com.phoenixredwolf.web.util.Res
 import com.varabyte.kobweb.compose.css.AlignContent
-import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -102,9 +99,9 @@ private fun LeftSide(
 }
 
 @Composable
-private fun RightSide() {
+fun RightSide() {
     Row(
-        modifier = Modifier
+        modifier = NavStyle.toModifier()
             .fillMaxWidth()
             .borderRadius(r = 50.px)
             .backgroundColor(Theme.LightGray.rgb)
@@ -113,18 +110,18 @@ private fun RightSide() {
         horizontalArrangement = Arrangement.End,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Section.values().take(4).forEach { section ->
-            Link(
-                modifier = NavigationItemStyle.toModifier()
-                    .padding(right = 30.px)
-                    .fontSize(18.px)
-                    .fontWeight(FontWeight.SemiBold)
-                    .textDecorationLine(TextDecorationLine.None),
-                path = section.path,
-                text = section.title
-            )
-        }
-
+//        Section.values().take(4).forEach { section ->
+//            Link(
+//                modifier = NavigationItemStyle.toModifier()
+//                    .padding(right = 30.px)
+//                    .fontSize(18.px)
+//                    .fontWeight(FontWeight.SemiBold)
+//                    .textDecorationLine(TextDecorationLine.None),
+//                path = section.path,
+//                text = section.title
+//            )
+//        }
+        NavBar2()
     }
 }
 

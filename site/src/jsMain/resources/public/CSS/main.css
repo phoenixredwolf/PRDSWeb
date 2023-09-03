@@ -2,21 +2,21 @@
     display: none;
 }
 
-.service:hover + .desc {
-    display: block;
-    transform: translateX(-200px);
-    animation-name: services;
-    animation-duration: 2s;
-}
+/*.service:hover + .desc {*/
+/*    display: block;*/
+/*    transform: translateX(-200px);*/
+/*    animation-name: services;*/
+/*    animation-duration: 2s;*/
+/*}*/
 
-.service:hover {
-    transform: translateX(-200px);
-}
+/*.service:hover {*/
+/*    transform: translateX(-200px);*/
+/*}*/
 
-@keyframes services {
-    from { text-align: center }
-    to { text-align: start }
-}
+/*@keyframes services {*/
+/*    from { text-align: center }*/
+/*    to { text-align: start }*/
+/*}*/
 
 .collapsible:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */

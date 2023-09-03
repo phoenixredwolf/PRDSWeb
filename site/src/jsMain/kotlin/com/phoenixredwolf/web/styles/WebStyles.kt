@@ -2,6 +2,7 @@ package com.phoenixredwolf.web.styles
 
 import com.phoenixredwolf.web.models.Theme
 import com.varabyte.kobweb.compose.css.CSSTransition
+import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
@@ -96,5 +97,18 @@ val IndexPageButtonStyle by ComponentStyle {
             .width(60.percent)
             .height(45.px)
             .backgroundColor(Theme.Primary.rgb)
+    }
+}
+
+val DropDownStyle by ComponentStyle {
+    base {
+        Modifier
+            .visibility(Visibility.Hidden)
+            .transition(
+                CSSTransition(property = "visibility", duration = 200.ms)
+            )
+    }
+    hover {
+        Modifier.visibility(Visibility.Visible)
     }
 }

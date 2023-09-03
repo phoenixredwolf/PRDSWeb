@@ -8,6 +8,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import org.jetbrains.compose.web.css.CSSNumeric
@@ -38,6 +39,8 @@ fun Slider(width: CSSNumeric) {
             Div(
                 attrs = Modifier
                     .classNames("carousel-inner")
+                    .boxShadow(3.px, 3.px, color = Colors.DarkGray)
+                    .borderRadius(r = 20.px)
                     .toAttrs()
             ) {
                  Div(

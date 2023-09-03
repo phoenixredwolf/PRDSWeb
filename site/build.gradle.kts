@@ -2,7 +2,6 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
 import kotlinx.html.script
-import kotlinx.html.title
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 plugins {
@@ -60,6 +59,7 @@ kotlin {
                 implementation(libs.kobweb.silk.core)
                 implementation(libs.kobweb.silk.icons.fa)
                 implementation(libs.kobwebx.markdown)
+                implementation(libs.kotlin.bootstrap)
             }
         }
         val jvmMain by getting {
