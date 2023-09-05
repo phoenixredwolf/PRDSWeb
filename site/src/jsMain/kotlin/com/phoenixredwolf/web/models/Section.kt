@@ -21,6 +21,16 @@ enum class Section: Data {
         override val path: String
             get() = "/services"
     },
+    Consulting {
+        override val id: String
+            get() = "consult"
+        override val title: String
+            get() = "Consulting"
+        override val subtitle: String
+            get() = "Let's Talk"
+        override val path: String
+            get() = "/consult"
+    },
     About {
         override val id: String
             get() = "about"

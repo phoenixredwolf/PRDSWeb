@@ -3,7 +3,9 @@ package com.phoenixredwolf.web.components
 import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Theme
 import com.phoenixredwolf.web.styles.LogoStyle
+import com.phoenixredwolf.web.styles.NavHeaderStyle
 import com.phoenixredwolf.web.styles.NavStyle
+import com.phoenixredwolf.web.theme.surfaceLight
 import com.phoenixredwolf.web.util.Res
 import com.varabyte.kobweb.compose.css.AlignContent
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -12,7 +14,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
@@ -34,13 +35,10 @@ fun Header(
     onMenuClicked: () -> Unit
 ) {
     Row(
-        modifier = Modifier
+        modifier = NavHeaderStyle.toModifier()
             .fillMaxWidth()
-            .zIndex(1)
-            .attrsModifier {
-                attr("class", "navbar navbar-expand-lg navbar-light headerBackground")
-            }
-            .backgroundColor(Theme.Surface.rgb)
+            .backgroundColor(surfaceLight)
+            .zIndex(2)
             .position(Position.Fixed),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
@@ -104,24 +102,13 @@ fun RightSide() {
         modifier = NavStyle.toModifier()
             .fillMaxWidth()
             .borderRadius(r = 50.px)
-            .backgroundColor(Theme.LightGray.rgb)
+            .backgroundColor(surfaceLight)
             .padding(all = 10.px)
             .margin(left = 40.px),
         horizontalArrangement = Arrangement.End,
         verticalAlignment = Alignment.CenterVertically
     ) {
-//        Section.values().take(4).forEach { section ->
-//            Link(
-//                modifier = NavigationItemStyle.toModifier()
-//                    .padding(right = 30.px)
-//                    .fontSize(18.px)
-//                    .fontWeight(FontWeight.SemiBold)
-//                    .textDecorationLine(TextDecorationLine.None),
-//                path = section.path,
-//                text = section.title
-//            )
-//        }
-        NavBar2()
+        NavBar()
     }
 }
 

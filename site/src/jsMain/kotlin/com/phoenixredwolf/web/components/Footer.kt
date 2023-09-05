@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
 import com.phoenixredwolf.web.styles.FooterItemStyle
+import com.phoenixredwolf.web.theme.footerBackground
 import com.phoenixredwolf.web.util.Res
 import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.dom.ref
@@ -34,7 +35,7 @@ fun FooterContent(breakpoint: Breakpoint) {
         modifier = Modifier
             .classNames("footer")
             .fillMaxSize()
-            .backgroundColor(Theme.Primary.rgb),
+            .backgroundImage(footerBackground),
         contentAlignment = Alignment.Center
     ) {
         if (breakpoint >= Breakpoint.MD){
@@ -49,14 +50,6 @@ fun FooterContent(breakpoint: Breakpoint) {
                 it.appendChild(script)
             }
         )
-        Box (
-            ref = ref {
-                val script = document.createElement("script")
-                script.asDynamic().src = "/js/prdsAdded.js"
-                it.appendChild(script)
-            }
-        )
-
     }
 }
 
@@ -159,7 +152,7 @@ fun FooterMenu(breakpoint: Breakpoint, vert: Boolean = false) {
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        Section.values().take(3).forEach { section ->
+        Section.values().take(5).forEach { section ->
             Link(
                 modifier = FooterItemStyle.toModifier()
                     .padding(right = 20.px)

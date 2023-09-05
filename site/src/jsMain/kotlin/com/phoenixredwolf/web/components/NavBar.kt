@@ -1,8 +1,10 @@
 package com.phoenixredwolf.web.components
 
 import androidx.compose.runtime.Composable
+import com.phoenixredwolf.web.styles.GridStyle
 import com.phoenixredwolf.web.styles.NavStyle
 import com.phoenixredwolf.web.styles.NavigationItemStyle
+import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.Width
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -13,212 +15,153 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.toModifier
-import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
+
 
 @Composable
 fun NavBar() {
     Row(
         modifier = NavStyle.toModifier()
-//            .backgroundImage(
-//                linearGradient(LinearGradient.Direction.ToBottomRight, Colors.White, Theme.Primary.rgb)
-//            )
-            .padding(topBottom = 10.px),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+            .classNames("nav-bar")
+            .borderRadius(r = 20.px)
+            .width(Width.FitContent)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(90.percent),
-            horizontalArrangement = Arrangement.End,
-            verticalAlignment = Alignment.CenterVertically
+        Div(
+            attrs = NavStyle.toModifier()
+                .attrsModifier {
+                    attr("class", "nav-bar nav-bar_item")
+                }
+                .toAttrs()
         ) {
-            Ul(
-                attrs = NavStyle.toModifier()
-                    .classNames("nav-bar")
-                    .borderRadius(r = 20.px)
-                    .fillMaxWidth(40.percent)
+            Link(
+                path = "/",
+                text = "Home",
+                modifier = NavigationItemStyle.toModifier()
+            )
+        }
+        Div(
+            attrs = NavStyle.toModifier()
+                .attrsModifier {
+                    attr("class", "nav-bar nav-bar_item dropdown")
+                }
+                .toAttrs()
+        ) {
+            A(
+                attrs = NavigationItemStyle.toModifier()
+                    .cursor(Cursor.Pointer)
                     .toAttrs()
             ) {
-                Li(
-                    attrs = NavStyle.toModifier()
+                Text("Services")
+            }
+            Div(
+                attrs = NavStyle.toModifier()
+                    .attrsModifier {
+                        attr("class", "services")
+                    }
+                    .toAttrs()
+            ) {
+                Div(
+                    attrs = Modifier
                         .attrsModifier {
-                            attr("class", "nav-bar nav-bar_item")
+                            attr("class", "drop-item")
                         }
-                        .toAttrs()
-                ){
-                    Link(
-                        path = "/",
-                        text = "Home",
-                        modifier = NavigationItemStyle.toModifier()
-                    )
-                }
-                Li(
-                    attrs = NavStyle.toModifier()
-                        .attrsModifier {
-                            attr("class", "nav-bar nav-bar_item")
-                        }
-                        .toAttrs()
-                ){
-                    Link(
-                        path = "/about",
-                        text = "About",
-                        modifier = NavigationItemStyle.toModifier()
-                    )
-                }
-                Li(
-                    attrs = NavStyle.toModifier()
-                        .attrsModifier {
-                            attr("class", "nav-bar nav-bar_item dropdown")
-                        }
+                        .width(Width.FitContent)
                         .toAttrs()
                 ) {
-                    A(
-                        attrs = NavStyle.toModifier()
-                            .toAttrs()
-                    ) {
-                        Text("Services")
-                    }
-                    Ul(
-                        attrs = NavStyle.toModifier()
-                            .attrsModifier {
-                                attr("class", "services")
-                            }
-                            .width(Width.MaxContent)
-                            .toAttrs()
-                    ) {
-                        Li(
-                            attrs = NavStyle.toModifier()
-                                .classNames("drop-item")
-                                .width(Width.FitContent)
-                                .toAttrs()
-                        ){
-                            Link(
-                                path = "/services/web",
-                                text = "Web Development",
-                                modifier = NavigationItemStyle.toModifier()
-                            )
-                        }
-                        Li(
-                            attrs = NavStyle.toModifier()
-                                .classNames("drop-item")
-                                .toAttrs()
-                        ){
-                            Link(
-                                path = "/services/software",
-                                text = "Software Development",
-                                modifier = NavigationItemStyle.toModifier()
-                            )
-                        }
-                    }
-                }
-                Li(
-                    attrs = NavStyle.toModifier()
-                        .attrsModifier {
-                            attr("class", "nav-bar nav-bar_item")
-                        }
-                        .borderRadius(r = 20.px)
-                        .padding(right = 20.px)
-                        .toAttrs()
-                ){
-                    Link(
-                        path = "/contact",
-                        text = "Contact Us",
-                        modifier = NavigationItemStyle.toModifier()
-                    )
+                    ServicesDropdown()
                 }
             }
+        }
+        Div(
+            attrs = NavStyle.toModifier()
+                .attrsModifier {
+                    attr("class", "nav-bar nav-bar_item dropdown")
+                }
+                .toAttrs()
+        ) {
+            A(
+                attrs = NavigationItemStyle.toModifier()
+                    .cursor(Cursor.Pointer)
+                    .toAttrs()
+            ) {
+                Text("Consulting")
+            }
+            Div(
+                attrs = NavStyle.toModifier()
+                    .attrsModifier {
+                        attr("class", "services")
+                    }
+                    .toAttrs()
+            ) {
+                Div(
+                    attrs = Modifier
+                        .attrsModifier {
+                            attr("class", "drop-item")
+                        }
+                        .width(Width.FitContent)
+                        .toAttrs()
+                ) {
+                    ConsultDropdown()
+                }
+            }
+        }
+        Div(
+            attrs = NavStyle.toModifier()
+                .attrsModifier {
+                    attr("class", "nav-bar nav-bar_item")
+                }
+                .toAttrs()
+        ) {
+            Link(
+                path = "/about",
+                text = "About",
+                modifier = NavigationItemStyle.toModifier()
+            )
+        }
+        Div(
+            attrs = NavStyle.toModifier()
+                .attrsModifier {
+                    attr("class", "nav-bar nav-bar_item")
+                }
+                .borderRadius(r = 20.px)
+                .padding(leftRight = 20.px)
+                .toAttrs()
+        ) {
+            Link(
+                path = "/contact",
+                text = "Contact Us",
+                modifier = NavigationItemStyle.toModifier()
+            )
         }
     }
 }
 
 @Composable
 fun NavBar2() {
-//    Row(
-//        modifier = Modifier
-//            .fillMaxWidth(90.percent),
-//        horizontalArrangement = Arrangement.End,
-//        verticalAlignment = Alignment.CenterVertically
-//    ) {
-        Ul(
-            attrs = NavStyle.toModifier()
-                .classNames("nav-bar")
-                .borderRadius(r = 20.px)
-                .width(Width.FitContent)
-                .toAttrs()
+    Row(
+        modifier = GridStyle.toModifier().classNames("grid"),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Row(
+            modifier = GridStyle.toModifier().classNames("top")
+        ) { Text("Services") }
+        Row(
+            modifier = GridStyle.toModifier().classNames("bottom")
         ) {
-            Li(
-                attrs = NavStyle.toModifier()
-                    .attrsModifier {
-                        attr("class", "nav-bar nav-bar_item")
-                    }
-                    .toAttrs()
-            ) {
-                Link(
-                    path = "/",
-                    text = "Home",
-                    modifier = NavigationItemStyle.toModifier()
+            Select {
+                Option(
+                    value = "Services",
+                    content = { Text("Services") }
                 )
-            }
-            Li(
-                attrs = NavStyle.toModifier()
-                    .attrsModifier {
-                        attr("class", "nav-bar nav-bar_item")
-                    }
-                    .toAttrs()
-            ) {
-                Link(
-                    path = "/about",
-                    text = "About",
-                    modifier = NavigationItemStyle.toModifier()
-                )
-            }
-            Li(
-                attrs = NavStyle.toModifier()
-                    .attrsModifier {
-                        attr("class", "nav-bar nav-bar_item dropdown")
-                    }
-                    .toAttrs()
-            ) {
-                A(
-                    attrs = NavStyle.toModifier()
-                        .toAttrs()
-                ) {
-                    Text("Services")
-                }
-                Div(
-                    attrs = NavStyle.toModifier()
-                        .attrsModifier {
-                            attr("class", "services")
-                        }
-                        .toAttrs()
-                ) {
-                    Div(
-                        attrs = NavStyle.toModifier()
-                            .classNames("drop-item")
-                            .width(Width.FitContent)
-                            .toAttrs()
-                    ) {
-                        ServicesDropdown()
-                    }
-                }
-            }
-            Li(
-                attrs = NavStyle.toModifier()
-                    .attrsModifier {
-                        attr("class", "nav-bar nav-bar_item")
-                    }
-                    .borderRadius(r = 20.px)
-                    .padding(leftRight = 20.px)
-                    .toAttrs()
-            ) {
-                Link(
-                    path = "/contact",
-                    text = "Contact Us",
-                    modifier = NavigationItemStyle.toModifier()
+                Option(
+                    value = "Services",
+                    content = { Text("Services") }
                 )
             }
         }
-//    }
+    }
 }
+
+

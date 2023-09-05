@@ -1,10 +1,12 @@
 package com.phoenixredwolf.web.styles
 
 import com.phoenixredwolf.web.models.Theme
-import com.varabyte.kobweb.compose.css.CSSTransition
-import com.varabyte.kobweb.compose.css.Visibility
+import com.phoenixredwolf.web.theme.*
+import com.phoenixredwolf.web.util.Res
+import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.anyLink
 import com.varabyte.kobweb.silk.components.style.hover
@@ -18,7 +20,7 @@ val SocialLinkStyle by ComponentStyle {
             .transition(CSSTransition(property = "color", duration = 200.ms))
     }
     hover {
-        Modifier.color(Theme.Primary.rgb)
+        Modifier.color(primaryLight)
     }
 }
 
@@ -35,48 +37,34 @@ val LogoStyle by ComponentStyle {
     }
 }
 
-val NavigationItemStyle by ComponentStyle {
-    base {
-        Modifier
-            .color(Theme.OnPrimary.rgb)
-            .transition(CSSTransition(property = "color", duration = 200.ms))
-    }
-    anyLink {
-        Modifier
-            .color(Theme.Primary.rgb)
-    }
-    hover {
-        Modifier.color(Theme.Secondary.rgb)
-    }
-}
 
 val FooterItemStyle by ComponentStyle {
     base {
         Modifier
-            .color(Theme.OnPrimary.rgb)
+            .color(onPrimaryLight)
             .transition(CSSTransition(property = "color", duration = 200.ms))
     }
     anyLink {
         Modifier
-            .color(Theme.OnPrimary.rgb)
+            .color(onPrimaryLight)
     }
     hover {
-        Modifier.color(Theme.OnSecondary.rgb)
+        Modifier.color(onSecondaryLight)
     }
 }
 
 val SectionMenuStyle by ComponentStyle {
     base {
         Modifier
-            .color(Theme.OnSecondaryContainer.rgb)
+            .color(onSecondaryContainerLight)
             .transition(CSSTransition(property = "color", duration = 200.ms))
     }
     anyLink {
         Modifier
-            .color(Theme.OnSecondaryContainer.rgb)
+            .color(onSecondaryContainerLight)
     }
     hover {
-        Modifier.color(Theme.Error.rgb)
+        Modifier.color(errorLight)
     }
 }
 
@@ -85,18 +73,32 @@ val IndexPageButtonStyle by ComponentStyle {
         Modifier
             .width(50.percent)
             .height(40.px)
-            .backgroundColor(Theme.Secondary.rgb)
+            .backgroundColor(primaryContainerDark)
+            .textDecorationLine(TextDecorationLine.None)
+            .color(onPrimaryContainerDark)
+            .fontSize(FontSize.Large)
+            .fontWeight(FontWeight.SemiBold)
             .transition(
                 CSSTransition(property = "width", duration = 200.ms),
                 CSSTransition(property = "backgroundColor", duration = 200.ms),
                 CSSTransition(property = "height", duration = 200.ms)
             )
     }
+    anyLink{
+        Modifier
+            .color(onPrimaryContainerDark)
+            .transition(
+                CSSTransition(property = "backgroundColor", duration = 200.ms),
+                CSSTransition(property = "color", duration = 200.ms)
+            )
+    }
     hover {
         Modifier
             .width(60.percent)
             .height(45.px)
-            .backgroundColor(Theme.Primary.rgb)
+            .textDecorationLine(TextDecorationLine.None)
+            .backgroundColor(secondaryContainerDark)
+            .color(onSecondaryContainerDark)
     }
 }
 
@@ -110,5 +112,13 @@ val DropDownStyle by ComponentStyle {
     }
     hover {
         Modifier.visibility(Visibility.Visible)
+    }
+}
+
+val BackgroundLogoStyle by ComponentStyle {
+    base {
+        Modifier
+            .styleModifier { backgroundImage(Res.Image.icon) }
+//            .opacity(0.5)
     }
 }

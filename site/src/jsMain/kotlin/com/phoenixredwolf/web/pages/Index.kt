@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import com.phoenixredwolf.web.components.*
 import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
+import com.phoenixredwolf.web.styles.BackgroundLogoStyle
 import com.phoenixredwolf.web.util.Res
 import com.varabyte.kobweb.compose.css.FontSize
 import com.varabyte.kobweb.compose.css.FontStyle
@@ -22,6 +23,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.cssRem
@@ -60,6 +62,7 @@ fun HomePage() {
                     .fillMaxWidth(90.percent),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -71,14 +74,15 @@ fun HomePage() {
                     ) {
                         Image(
                             modifier = Modifier
-                                .opacity(0.2)
+                                .opacity(0.5)
                                 .fillMaxWidth(50.percent),
                             src = Res.Image.icon
                         )
                     }
                     Column(
-                        modifier = Modifier
-                            .fillMaxSize(),
+                        modifier = BackgroundLogoStyle.toModifier()
+                            .fillMaxSize()
+                            .zIndex(1),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.SpaceEvenly
                     ) {
