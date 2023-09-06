@@ -47,7 +47,7 @@ fun Cloud() {
 
                 }
                 Column {
-                    CircleCard("Implement Solutions", IMPLEMENT, Res.Image.solution)
+                    CircleCard("Implement Solutions", IMPLEMENT, Res.Image.webdev)
 
                 }
                 Column {

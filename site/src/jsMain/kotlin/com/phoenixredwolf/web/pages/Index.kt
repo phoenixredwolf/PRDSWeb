@@ -5,11 +5,9 @@ import com.phoenixredwolf.web.components.*
 import com.phoenixredwolf.web.models.Section
 import com.phoenixredwolf.web.models.Theme
 import com.phoenixredwolf.web.styles.BackgroundLogoStyle
+import com.phoenixredwolf.web.util.Constants
 import com.phoenixredwolf.web.util.Res
-import com.varabyte.kobweb.compose.css.FontSize
-import com.varabyte.kobweb.compose.css.FontStyle
-import com.varabyte.kobweb.compose.css.FontWeight
-import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.*
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -157,13 +155,14 @@ fun HomePage() {
                     modifier = Modifier
                         .padding(topBottom = 20.px)
                         .fillMaxWidth()
+                        .height(Height.MaxContent),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (breakpoint <= Breakpoint.SM) {
-                        Slider(width = 80.percent)
-                    } else if (breakpoint <= Breakpoint.MD) {
-                        Slider(40.percent)
+                    if (breakpoint <= Breakpoint.MD) {
+                        IndexCircleCards(true)
                     } else {
-                        Slider(30.percent)
+                        IndexCircleCards()
                     }
                 }
                 ContactOrSched(breakpoint, "To Get Started!")
@@ -224,8 +223,10 @@ private fun ServiceButtons(compact: Boolean = false) {
     } else {
         Row(
             modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+                .fillMaxWidth()
+                .height(Height.MaxContent),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
                 modifier = Modifier.fillMaxWidth().padding(right =5.px),
@@ -258,5 +259,65 @@ private fun ServiceButtons(compact: Boolean = false) {
                 NavButton("Services", "/services")
             }
         }
+    }
+}
+
+@Composable
+private fun IndexCircleCards(vertical : Boolean = false) {
+    if (vertical) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(90.percent),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Column(
+                modifier = Modifier.padding(topBottom = 20.px)
+            ) {
+                CircleCard("Initial Consultation", Constants.CONSULT, Res.Image.collaboration)
+
+            }
+            Column(
+                modifier = Modifier.padding(topBottom = 20.px)
+            ) {
+                CircleCard("Implement Solutions", Constants.IMPLEMENT, Res.Image.webdev)
+
+            }
+            Column(
+                modifier = Modifier.padding(topBottom = 20.px)
+            ) {
+                CircleCard("Train & Support", Constants.SUPPORT, Res.Image.empower)
+
+            }
+
+        }
+    } else {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(90.percent),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(
+                modifier = Modifier.height(500.px).padding(leftRight = 10.px)
+            ) {
+                CircleCard("Initial Consultation", Constants.CONSULT, Res.Image.collaboration)
+
+            }
+            Column(
+                modifier = Modifier.height(500.px).padding(leftRight = 10.px)
+            ) {
+                CircleCard("Implement Solutions", Constants.IMPLEMENT, Res.Image.webdev)
+
+            }
+            Column(
+                modifier = Modifier.height(500.px).padding(leftRight = 10.px)
+            ) {
+                CircleCard("Train & Support", Constants.SUPPORT, Res.Image.empower)
+
+            }
+
+        }
+
     }
 }

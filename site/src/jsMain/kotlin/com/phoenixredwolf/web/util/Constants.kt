@@ -32,7 +32,7 @@ object Res{
         const val solution = "/images/solutions-600x360.jpg"
         const val success = "/images/success-600x344.jpg"
         const val cloud = "/images/cloudbase2.jpg"
-        const val webdev = "/images/webdev.png"
+        const val webdev = "/images/webdev.jpg"
         const val softdev = "/images/softdev.jpg"
         const val netAdmin = "/images/networkAdmin.jpg"
         const val tag1 = "/images/tagline1.svg"

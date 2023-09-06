@@ -37,10 +37,10 @@ fun CircleCard(headline: String, body: String, image: String) {
         ) {
             A(
                 attrs = CtaStyle.toModifier()
-                    .attrsModifier { attr("href", "#") }
+                    .attrsModifier { attr("href", "https://calendly.com/admin-fjs/30min") }
                     .toAttrs()
             ) {
-                Text("Call to Action")
+                Text("Schedule a Call")
             }
         }
         Div(

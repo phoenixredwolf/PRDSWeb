@@ -18,7 +18,7 @@ val CardStyle by ComponentStyle {
             .boxShadow(0.px, 0.px, 10.px, 2.px, Colors.DarkGray)
             .left(0.px)
             .overflow(Overflow.Hidden)
-            .position(Position.Absolute)
+            .position(Position.Relative)
             .right(0.px)
             .top(0.px)
             .styleModifier {
@@ -87,10 +87,10 @@ val H2Style by ComponentStyle{
             .fontFamily("Raleway", "sans-serif")
             .fontSize(24.px)
             .fontWeight(200)
-            .position(Position.Absolute)
+            .position(Position.Relative)
             .textAlign(TextAlign.Center)
             .fillMaxWidth()
-            .zIndex(9999)
+            .zIndex(1)
             .margin(top = 150.px)
     }
     cssRule(" .transition") {
@@ -106,9 +106,10 @@ val PStyle by ComponentStyle {
             .fontFamily("Raleway", "sans-serif")
             .fontSize(100.percent)
             .fontWeight(FontWeight.Normal)
+            .padding(leftRight = 5.px)
             .position(Position.Absolute)
             .textAlign(TextAlign.Center)
-            .zIndex(9999)
+//            .zIndex(9999)
             .margin(top = 200.px)
     }
 }
@@ -120,7 +121,7 @@ val CtaContainerStyle by ComponentStyle{
             .position(Position.Absolute)
             .textAlign(TextAlign.Center)
             .fillMaxWidth()
-            .zIndex(9999)
+//            .zIndex(9999)
             .margin(top = 320.px)
     }
     cssRule(" .transition") {
